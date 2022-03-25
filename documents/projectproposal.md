@@ -21,5 +21,6 @@ We are going to use Brandes' Algorithm for this part. The input of Brandes' Algo
 2. Depth-first earch (April 7th)
 3. Floyd-Warshall (April 14th)
 4. Betweeness Centrality (April 28th)
+5. Video/report completed (May 5th)
 
 If there is time after completing these deliverables, we will do a visualization of the dataset. 
