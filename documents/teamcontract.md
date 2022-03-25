@@ -11,5 +11,6 @@
 3. **Conflict Resolution** We will address conflicts at our weekly meetings and discuss the issue amongst ourselves. We then will vote on the issue with the notetaker being the tiebreaker again. For instance, if someone does not complete their work, we will mention it at the meeting, and if it continues, further action will be taken, including but not limited to, notifying course staff. 
 
 ## Signatures
-Christopher Sapinski cs79
+Christopher Sapinski (cs79)
 Nihal Shivannagari (nshiv3)
+Shrijan Sathish (shrijan2)
