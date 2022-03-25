@@ -1,7 +1,7 @@
 # Team Contract
 
 ## Communication
-1. **Team Meetings** Our team will meet once a week every ___ using Discord. Each member will rotate being designated as a notetaker starting with nshiv3. These notes will be kept in a folder on our github page denoted notes. This notetaker will also be responsible for filling out the development log for that week. 
+1. **Team Meetings** Our team will meet once a week every Tuesday 3:30-5:30p using Discord. Each member will rotate being designated as a notetaker starting with nshiv3. These notes will be kept in a folder on our github page denoted notes. This notetaker will also be responsible for filling out the development log for that week. 
 2. **Assistance** We will communicate using Discord and we should expect replies within 48 hours, excepting extenuating circumstances. 
 3. **Respect** The notetaker will also be the discussion leader for the week and they will be expected to allow everyone's voice to be heard and facilitate a good group dynamic. All decisions will be made by majority with the tiebreak going to the notetaker for the week if necessary. Even if someone disagrees with the decision made, we sign this contract understanding that we will uphold the decision regardless. 
 
@@ -12,6 +12,6 @@
 
 ## Signatures
 Christopher Sapinski (cs79) 
-ihal Shivannagari (nshiv3) 
+Nihal Shivannagari (nshiv3) 
 Shrijan Sathish (shrijan2) 
 Yueran Wang (yueranw2)
