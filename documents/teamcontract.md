@@ -12,6 +12,9 @@
 
 ## Signatures
 Christopher Sapinski (cs79) 
+
 Nihal Shivannagari (nshiv3) 
+
 Shrijan Sathish (shrijan2) 
+
 Yueran Wang (yueranw2)
