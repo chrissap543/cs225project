@@ -18,7 +18,7 @@ We are going to use Brandes' Algorithm for this part. The input of Brandes' Algo
 
 ## Timeline
 1. Data acquisition/processing (March 31st)
-2. Depth-first earch (April 7th)
+2. Depth-first search (April 7th)
 3. Floyd-Warshall (April 14th)
 4. Betweeness Centrality (April 28th)
 5. Video/report completed (May 5th)
