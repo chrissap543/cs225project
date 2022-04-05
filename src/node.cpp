@@ -1,4 +1,4 @@
-#include "Node.hpp"
+#include "node.hpp"
 
 Node::Node(std::string name): name(name) {} 
 

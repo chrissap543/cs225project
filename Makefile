@@ -1,5 +1,5 @@
 CXX=clang++
-INCLUDES=-Iincludes/
+INCLUDES=-Iinclude/
 CXXFLAGS=-std=c++20 -g
 
 exec: bin/exec
