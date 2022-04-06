@@ -13,5 +13,5 @@ public:
   void addNode(Node* node); 
   void addNode(string s); 
 private:
-  vector<Node*> nodes; 
+  vector<Node*> nodes;
 }; 
