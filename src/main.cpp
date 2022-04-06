@@ -33,6 +33,10 @@ Graph buildgraph(Graph graph){
         }
         
         else if(mp.find(source) != mp.end() && mp.find(target) != map.end()){
+            auto src = mp.find(source);
+            auto targ = mp.find(target);
+
+            src->second->addNeighbor(targ->second);
 
         }
         else if(mp.find(source) == mp.end() && mp.find(target) != map.end()){
