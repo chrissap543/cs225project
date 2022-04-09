@@ -14,5 +14,5 @@ public:
   void addNeighbor(Node* node); 
 private:
   std::string name; 
-  std::vector<Node*> neighbors; 
+  std::vector<Node*> neighbors;
 }; 
