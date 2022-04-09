@@ -1,18 +1,17 @@
 #include "graph.hpp"
 
 using std::string; 
+using std::unordered_map; 
+
+Graph::Graph(unordered_map<string, Node*> nodes_): nodes(nodes_) {}
 
 Graph::~Graph() {
-  for(int i = 0; i < nodes.size(); i++){
-    if(nodes.at(i) != nullptr)
-      delete nodes.at(i); 
+  for(auto ele : nodes) {
+    if(ele.second != nullptr) {
+      delete ele.second; 
+      ele.second = nullptr; 
+    }
   }
 }
 
-void Graph::addNode(Node* node) {
-  nodes.push_back(node); 
-}
-
-void Graph::addNode(string s) {
-  nodes.push_back(new Node(s)); 
-}
+const unordered_map<string, Node*>& Graph::getNodes() const { return nodes; }

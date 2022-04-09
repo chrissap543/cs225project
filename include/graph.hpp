@@ -2,16 +2,17 @@
 
 #include "node.hpp"
 
-using std::vector; 
+#include <unordered_map>
+
 using std::string; 
+using std::unordered_map; 
 
 class Graph {
 public:
-  Graph() = default; 
+  Graph(unordered_map<string, Node*> nodes_); 
   ~Graph(); 
 
-  void addNode(Node* node); 
-  void addNode(string s); 
+  const unordered_map<string, Node*>& getNodes() const; 
 private:
-  vector<Node*> nodes; 
+  unordered_map<string, Node*> nodes; 
 }; 
