@@ -68,3 +68,7 @@ std::vector<std::string> splitLine(std::string line) {
   vect.erase(vect.begin()); 
   return vect; 
 }
+
+int depthFirstSearch(Node * start) {
+  
+}
