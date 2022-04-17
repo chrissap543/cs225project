@@ -1,6 +1,8 @@
-#include "../include/matrix.hpp"
+#include "matrix.hpp"
 
-using namespace std;
+using std::fstream; 
+using std::string; 
+using std::pair; 
 
 Matrix::Matrix()
 {

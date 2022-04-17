@@ -1,5 +1,6 @@
-#include <iostream>
 #include "matrix.cpp"
+
+#include <iostream>
 #include <string>
 
 int main() {
