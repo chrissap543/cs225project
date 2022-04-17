@@ -5,7 +5,7 @@ CXXFLAGS=-std=c++14 -g
 exec: bin/exec
 test: bin/tests
 
-bin/exec: ./src/main.cpp ./src/matrix.cpp
+bin/exec: ./src/main.cpp ./src/graph.cpp ./src/node.cpp ./src/processdata.cpp ./src/matrix.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
 

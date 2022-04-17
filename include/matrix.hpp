@@ -1,5 +1,4 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#pragma once
 
 #include <fstream>
 #include <map>
@@ -18,5 +17,3 @@ private:
   std::map<int,std::string> names;
   int n;
 }; 
-
-#endif // MATRIX_H
