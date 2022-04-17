@@ -4,8 +4,7 @@ using std::fstream;
 using std::string; 
 using std::pair; 
 
-Matrix::Matrix()
-{
+Matrix::Matrix() {
     fstream f("../data/fixed_data.csv");
     int i=0;
     int n=55863;
@@ -75,6 +74,5 @@ bool Matrix::isConnectedTo(string a, string b)
 }
 std::string Matrix::name(int a)
 {
-    //return "hi";
     return names[a];
 }

@@ -1,11 +1,11 @@
 CXX=clang++
 INCLUDES=-Iinclude/
-CXXFLAGS=-std=c++20 -g -v 
+CXXFLAGS=-std=c++14 -g
 
 exec: bin/exec
 test: bin/tests
 
-bin/exec: ./src/main.cpp ./src/node.cpp ./src/graph.cpp ./src/matrix.cpp
+bin/exec: ./src/main.cpp ./src/matrix.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
 
