@@ -5,8 +5,10 @@ CXXFLAGS=--std=c++11 -g
 exec: bin/exec
 test: bin/tests
 
-bin/exec: ./src/main.cpp ./src/node.cpp ./src/graph.cpp ./src/processdata.cpp
+bin/exec: ./src/main.cpp ./src/graph.cpp ./src/node.cpp ./src/processdata.cpp ./src/matrix.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
-clean:
+clean: 
 	rm -rf bin/*
+
+.DEFAULT: exec
