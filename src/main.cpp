@@ -1,8 +1,12 @@
 #include <iostream>
-#include <matrix.hpp>
+#include "matrix.cpp"
+#include <string>
 
 int main() {
-  std::fstream f("fixed_data.csv");
-  Matrix m(f);
-  std::cout<<m.isConnectedTo("nfl","cfb")<<std::endl;
+  Matrix matrix;
+  std::string a="nfl";
+  std::cout<<a<<std::endl;
+  //std::string b="cfb";
+  //matrix.isConnectedTo(a,b);
+  //std::cout<<matrix.isConnectedTo("nfl","cfb")<<std::endl;
 }
