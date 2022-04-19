@@ -13,6 +13,11 @@ public:
   ~Graph(); 
 
   const unordered_map<string, Node*>& getNodes() const; 
+
+  void dfs(); 
+  void dfs(Node* start); 
 private:
   unordered_map<string, Node*> nodes; 
+
+  const int NUM_DATA_POINTS = 55863; // gotten from Stanford SNAP
 }; 

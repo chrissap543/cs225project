@@ -9,8 +9,6 @@
 #include <stack>
 class ProcessData{
 public:
-
-  void depthFirstSearch(Node * start);
   void floydWarshall();
   void shortestDistance(Node * first, Node * target);
   void betweenCenter(int centers);
