@@ -69,6 +69,9 @@ std::vector<std::string> splitLine(std::string line) {
   return vect; 
 }
 
-int depthFirstSearch(Node * start) {
+void depthFirstSearch(Node * start) {
+  std::vector<bool> visited;
+  visited.reserve(NUM_DATA_POINTS);
   
+
 }
