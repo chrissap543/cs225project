@@ -13,3 +13,11 @@ const std::vector<Node*>& Node::getNeighbors() const {
 void Node::addNeighbor(Node* node) {
   neighbors.push_back(node); 
 }
+
+bool Node::getStatus() {
+  return hasVisited;
+}
+
+void Node::setStatus(bool status) {
+  hasVisited = status;
+}

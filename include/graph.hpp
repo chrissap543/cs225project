@@ -6,7 +6,7 @@
 
 using std::string; 
 using std::unordered_map; 
-
+#include <stack>
 class Graph {
 public:
   Graph(unordered_map<string, Node*> nodes_); 

@@ -22,6 +22,24 @@ void Graph::dfs() {
 }
 
 void Graph::dfs(Node* start) {
-  std::vector<bool> visited;
-  visited.reserve(NUM_DATA_POINTS);
+  
+  for(auto it = nodes.begin(); it != nodes.end(); ++it) {
+  it->second->setStatus(false);
+  }
+  std::stack<Node*> s;
+  s.push(start);
+  while (!s.empty()) {
+    Node* cur = s.top();
+    s.pop();
+    if (cur->getStatus() == false) {
+      cur->setStatus(true);
+    }
+    std::vector<Node*> neighbors = cur->getNeighbors();
+    for (int i = 0; i < neighbors.size(); i++) {
+      if (neighbors[i]->getStatus() == false) {
+        s.push(neighbors[i]);
+      }
+    }
+  }
+
 }
