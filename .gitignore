@@ -33,6 +33,10 @@
 
 bin/*
 
-data/data.tsv
+data/data*.tsv
+
+Dockerfile
+
+.devcontainer/*
 
 .vscode/*
