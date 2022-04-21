@@ -34,3 +34,7 @@
 bin/*
 
 data/data*.tsv
+
+Dockerfile
+
+.devcontainer/*
