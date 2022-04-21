@@ -1,5 +1,5 @@
 #include "catch/catch.hpp"
 
-TEST_CASE("Build graph", "[graph][data]") {
+TEST_CASE("Split string", "[data]") {
   REQUIRE(true); 
 }
