@@ -3,12 +3,12 @@ INCLUDES=-Iinclude/
 CXXFLAGS=--std=c++1y -stdlib=libc++ -g
 
 exec: bin/exec
-test: bin/tests
+test: bin/test
 
 bin/exec: ./src/main.cpp ./src/graph.cpp ./src/node.cpp ./src/processdata.cpp ./src/matrix.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 
-bin/tests: ./src/node.cpp ./src/graph.cpp ./src/processdata.cpp bin/graphtests.o bin/splittests.o bin/catchmain.o
+bin/test: ./src/node.cpp ./src/graph.cpp ./src/processdata.cpp bin/graphtests.o bin/splittests.o bin/catchmain.o
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
 bin/graphtests.o: ./tests/graphtests.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $^ -o $@
