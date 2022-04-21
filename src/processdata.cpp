@@ -71,7 +71,8 @@ std::vector<std::string> splitLine(std::string line) {
 }
 
 static void trim(std::string& str) {
-  return trimLeft(trimRight(str)); 
+  trimRight(str); 
+  trimLeft(str);  
 }
 static void trimLeft(std::string& str) {
   str.erase(0, str.find_first_not_of(" "));
