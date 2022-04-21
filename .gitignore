@@ -34,3 +34,5 @@
 bin/*
 
 data/data*.tsv
+
+.vscode/*
