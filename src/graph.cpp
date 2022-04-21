@@ -22,9 +22,8 @@ void Graph::dfs() {
 }
 
 void Graph::dfs(Node* start) {
-  
   for(auto it = nodes.begin(); it != nodes.end(); ++it) {
-  it->second->setStatus(false);
+    it->second->setStatus(false);
   }
   std::stack<Node*> s;
   s.push(start);

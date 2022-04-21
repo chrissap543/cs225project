@@ -1,6 +1,6 @@
 #include "node.hpp"
 
-Node::Node(std::string name): name(name) {} 
+Node::Node(std::string name): name(name), hasVisited(false) {} 
 
 std::string Node::getName() const {
   return name; 
