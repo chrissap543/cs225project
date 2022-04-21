@@ -35,8 +35,8 @@ bin/*
 
 data/data*.tsv
 
+.vscode/*
+
 Dockerfile
 
 .devcontainer/*
-
-.vscode/*
