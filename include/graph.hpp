@@ -15,6 +15,12 @@ public:
   const unordered_map<string, Node*>& getNodes() const; 
 
   void dfs(); 
+
+  /**
+ * @brief 
+ * @param file_name the name of a csv file
+ * @return void
+ */
   void dfs(Node* start); 
 private:
   unordered_map<string, Node*> nodes; 
