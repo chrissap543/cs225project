@@ -43,9 +43,30 @@ std::vector<std::string> Graph::dfs(Node* start) {
     std::vector<Node*> neighbors = cur->getNeighbors();
     for (int i = 0; i < neighbors.size(); i++) {
       if (neighbors[i]->getStatus() == false) {
+  
         s.push(neighbors[i]);
       }
     }
   }
+    for(auto it = nodes.begin(); it != nodes.end(); ++it) {
+      if (it->second->getStatus() == false) {
+        s.push(it->second);
+        while (!s.empty()) {
+          Node* cur = s.top();
+          path.push_back(cur->getName()); 
+          s.pop();
+          if (cur->getStatus() == false) {
+            cur->setStatus(true);
+    }
+    std::vector<Node*> neighbors = cur->getNeighbors();
+    for (int i = 0; i < neighbors.size(); i++) {
+      if (neighbors[i]->getStatus() == false) {
+        s.push(neighbors[i]);
+        }
+      }
+    }
+  }
+}
+
   return path; 
 }
