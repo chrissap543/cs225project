@@ -1,4 +1,4 @@
-#include "catch/catch.hpp"
+#include "catch2/catch.hpp"
 #include "processdata.hpp"
 
 TEST_CASE("Empty split", "[processing]") {

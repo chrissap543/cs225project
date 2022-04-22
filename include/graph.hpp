@@ -17,8 +17,6 @@ public:
 
   const unordered_map<string, Node*>& getNodes() const; 
 
-  std::vector<std::string> dfs(); 
-
   /**
  * @brief Take a name of the node and produces traversal path
  * @param start the name of the node we want to start traversal with
@@ -39,6 +37,4 @@ private:
   const int NUM_DATA_POINTS = 55863; // gotten from Stanford SNAP
 
   void dfsUtil(Node* start, std::vector<std::string>& path); 
-
-  std::string defaultDfs; 
-}; 
+};

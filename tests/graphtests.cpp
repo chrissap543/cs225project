@@ -1,6 +1,4 @@
-#include "catch/catch.hpp"
-// #include "graph.hpp"
-// #include "node.hpp"
+#include "catch2/catch.hpp"
 #include "processdata.hpp"
 
 #include <algorithm>
@@ -121,10 +119,10 @@ TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
 }
 
 TEST_CASE("Full scale test", "[graph][traversal][data]") {
-  Graph g = buildGraph("data/fixed_data.csv"); 
+  Graph g = buildGraph("../data/fixed_data.csv"); 
   // cannot build whole dfs by hand
   // verify that certain nodes are in the traversal
-  std::vector<std::string> dfs = g.dfs(); 
+  std::vector<std::string> dfs = g.dfs("ps4"); 
   const unordered_map<std::string, Node*>& map = g.getNodes(); 
   // check for nodes listed early in the dataset
   REQUIRE(std::find(dfs.begin(), dfs.end(), "rddtgaming") != dfs.end()); 
