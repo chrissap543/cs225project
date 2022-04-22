@@ -51,8 +51,7 @@ Graph buildGraph(std::string file_name) {
   // for(auto it = mp.begin(); it != mp.end(); ++it) {
   //   std::cout << it->first << std::endl; 
   // }
-
-  std::cout << test.size() << std::endl; 
+  // std::cout << test.size() << std::endl; 
 
   return Graph(mp); 
 }
