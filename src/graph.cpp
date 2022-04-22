@@ -26,7 +26,7 @@ const unordered_map<string, Node*>& Graph::getNodes() const { return nodes; }
 
 std::vector<std::string> Graph::dfs() {
   // one of the first one in csv (chosen arbitrarily)
-  return dfs(defaultDfs); 
+  return dfs("ps4"); 
 }
 
 std::vector<std::string> Graph::dfs(std::string start) {

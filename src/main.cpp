@@ -1,9 +1,8 @@
-
-
 #include <iostream>
 #include "graph.hpp"
 #include "node.hpp"
 #include <string>
+
 int main() {
   // Matrix matrix;
   // std::string a="nfl";
