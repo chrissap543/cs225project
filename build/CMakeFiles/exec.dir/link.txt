@@ -1,0 +1,1 @@
+/usr/bin/clang++  -g  -rdynamic CMakeFiles/exec.dir/src/main.cpp.o  -o exec  -llib src/libsrc.a -linclude 

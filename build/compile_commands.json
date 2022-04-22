@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/exec.dir/src/main.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/main.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/main.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build",
+  "command": "/usr/bin/clang++    -g   -std=gnu++17 -o CMakeFiles/tests.dir/tests/catch/catchmain.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/catch/catchmain.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/catch/catchmain.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build",
+  "command": "/usr/bin/clang++    -g   -std=gnu++17 -o CMakeFiles/tests.dir/tests/graphtests.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/graphtests.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/graphtests.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build",
+  "command": "/usr/bin/clang++    -g   -std=gnu++17 -o CMakeFiles/tests.dir/tests/splittests.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/splittests.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/tests/splittests.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build/src",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/src.dir/graph.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/graph.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/graph.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build/src",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/src.dir/main.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/main.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/main.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build/src",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/src.dir/matrix.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/matrix.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/matrix.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build/src",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/src.dir/node.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/node.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/node.cpp"
+},
+{
+  "directory": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/build/src",
+  "command": "/usr/bin/clang++   -I/workspaces/cs79-nshiv3-shrijan2-yueranw2/include  -g   -std=gnu++17 -o CMakeFiles/src.dir/processdata.cpp.o -c /workspaces/cs79-nshiv3-shrijan2-yueranw2/src/processdata.cpp",
+  "file": "/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/processdata.cpp"
+}
+]

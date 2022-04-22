@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/graph.hpp
+node.hpp
+../include/node.hpp
+unordered_map
+-
+stack
+-
+stdlib.h
+-
+time.h
+-
+
+../include/node.hpp
+string
+-
+vector
+-
+
+/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/main.cpp
+iostream
+-
+graph.hpp
+/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/graph.hpp
+node.hpp
+/workspaces/cs79-nshiv3-shrijan2-yueranw2/src/node.hpp
+string
+-
+
