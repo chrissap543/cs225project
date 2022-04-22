@@ -8,6 +8,7 @@ Matrix::Matrix() {
     fstream f("../data/fixed_data.csv");
     int i=0;
     int n=55863;
+    distMatrix=nullptr;
     matrix= new bool*[n];
     for(size_t i=0;i<n;i++)
     {
@@ -75,4 +76,33 @@ bool Matrix::isConnectedTo(string a, string b)
 std::string Matrix::name(int a)
 {
     return names[a];
+}
+int** Matrix::shortestPath()
+{
+    distMatrix=new int*[n];
+    for(size_t i=0;i<n;i++)
+    {
+        distMatrix[i]=new int[n];
+    }
+    for(size_t i=0;i<N;i++)
+    {
+        for(size_t j=0;j<N;j++)
+        {
+            distMatrix[i][j]=matrix[i][j];
+        }
+    }
+    for(size_t i=0;i<N;i++)
+    {
+        for(size_t j=0;j<N;j++)
+        {
+            for(size_t k=0;k<N;k++)
+            {
+                if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])&&distMatrix[j][i]!=0&&distMatrix[i][k]!=0)
+                {
+                    distMatrix[j][k]=distMatrix[j][i]+distMatrix[i][k];
+                }
+            }
+        }
+    }
+    return distMatrix; 
 }
