@@ -35,7 +35,7 @@ Graph makeTestGraph(int n) {
 TEST_CASE("Build graph", "[graph][data]") {
   REQUIRE(true); 
 }
-TEST_CASE("Small graph", "[graph]") {
+TEST_CASE("Small graph dfs", "[graph][traversal]") {
   Graph g = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
   REQUIRE(g.dfs("LOL") == expected); 
