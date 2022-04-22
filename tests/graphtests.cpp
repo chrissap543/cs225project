@@ -2,10 +2,7 @@
 #include "graph.hpp"
 #include "node.hpp"
 
-TEST_CASE("Build graph", "[graph][data]") {
-  REQUIRE(true); 
-}
-TEST_CASE("Small graph", "[graph]") {
+Graph buildSmallGraph() {
   std::unordered_map<string, Node*> map;
   Node* a = new Node("LOL");
   Node* b = new Node("NBA");
@@ -21,5 +18,12 @@ TEST_CASE("Small graph", "[graph]") {
   map.insert({"NBA", b});
   map.insert({"behindthegifs", c});
   map.insert({"wowthissubexists", d});
-  Graph g(map);
+  return Graph(map); 
+}
+
+TEST_CASE("Build graph", "[graph][data]") {
+  REQUIRE(true); 
+}
+TEST_CASE("Small graph", "[graph]") {
+  Graph g = buildSmallGraph(); 
 }
