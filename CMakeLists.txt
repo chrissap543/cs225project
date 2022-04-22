@@ -4,7 +4,7 @@ project(Reddit_project)
 
 find_package(Catch2 REQUIRED)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
@@ -12,6 +12,11 @@ set(CMAKE_LINKER "/usr/bin/clang++")
 
 set(src_dir ${CMAKE_SOURCE_DIR}/src)
 set(tests_dir ${CMAKE_SOURCE_DIR}/tests)
+
+file(GLOB INCLUDES "includes/*.hpp")
+file(GLOB SOURCES "src/*.cpp")
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_subdirectory(${src_dir})
 file(GLOB_RECURSE tests_src CONFIGURE_DEPENDS ${tests_dir}/*.cpp)
