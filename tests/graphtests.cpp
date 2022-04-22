@@ -2,6 +2,7 @@
 #include "graph.hpp"
 #include "node.hpp"
 
+// standard small test graph
 Graph buildSmallTestGraph() {
   std::unordered_map<string, Node*> map;
   Node* a = new Node("LOL");
@@ -36,4 +37,6 @@ TEST_CASE("Build graph", "[graph][data]") {
 }
 TEST_CASE("Small graph", "[graph]") {
   Graph g = buildSmallTestGraph(); 
+  std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
+  REQUIRE(g.dfs("LOL") == expected); 
 }

@@ -16,19 +16,26 @@ Graph::~Graph() {
 
 const unordered_map<string, Node*>& Graph::getNodes() const { return nodes; }
 
-void Graph::dfs() {
+std::vector<std::string> Graph::dfs() {
   // one of the first one in csv (chosen arbitrarily)
-  dfs(nodes["ps4"]); 
+  return dfs("ps4"); 
 }
 
-void Graph::dfs(Node* start) {
+std::vector<std::string> Graph::dfs(std::string start) {
+  return dfs(nodes[start]); 
+}
+
+std::vector<std::string> Graph::dfs(Node* start) {
   for(auto it = nodes.begin(); it != nodes.end(); ++it) {
     it->second->setStatus(false);
   }
+  std::vector<std::string> path; 
+
   std::stack<Node*> s;
   s.push(start);
   while (!s.empty()) {
     Node* cur = s.top();
+    path.push_back(cur->getName()); 
     s.pop();
     if (cur->getStatus() == false) {
       cur->setStatus(true);
@@ -40,5 +47,5 @@ void Graph::dfs(Node* start) {
       }
     }
   }
-
+  return path; 
 }

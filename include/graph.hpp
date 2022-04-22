@@ -14,14 +14,10 @@ public:
 
   const unordered_map<string, Node*>& getNodes() const; 
 
-  void dfs(); 
+  std::vector<std::string> dfs(); 
+  std::vector<std::string> dfs(std::string start); 
 
-  /**
- * @brief 
- * @param file_name the name of a csv file
- * @return void
- */
-  void dfs(Node* start); 
+  std::vector<std::string> dfs(Node* start); 
 private:
   unordered_map<string, Node*> nodes; 
 
