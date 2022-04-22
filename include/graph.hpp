@@ -34,4 +34,6 @@ private:
   unordered_map<string, Node*> nodes; 
 
   const int NUM_DATA_POINTS = 55863; // gotten from Stanford SNAP
+
+  void dfsUtil(Node* start, std::vector<std::string>& path); 
 }; 

@@ -30,43 +30,29 @@ std::vector<std::string> Graph::dfs(Node* start) {
     it->second->setStatus(false);
   }
   std::vector<std::string> path; 
+  dfsUtil(start, path); 
+  for(auto it = nodes.begin(); it != nodes.end(); ++it) {
+    if(it->second->getStatus() == false)
+      dfsUtil(it->second, path); 
+  }
+  return path; 
+}
 
-  std::stack<Node*> s;
-  s.push(start);
+void Graph::dfsUtil(Node* start, std::vector<std::string>& path) {
+  std::stack<Node*> s; 
+  s.push(start); 
   while (!s.empty()) {
     Node* cur = s.top();
-    path.push_back(cur->getName()); 
     s.pop();
     if (cur->getStatus() == false) {
+      path.push_back(cur->getName()); 
       cur->setStatus(true);
     }
     std::vector<Node*> neighbors = cur->getNeighbors();
     for (int i = 0; i < neighbors.size(); i++) {
       if (neighbors[i]->getStatus() == false) {
-  
         s.push(neighbors[i]);
       }
     }
   }
-    for(auto it = nodes.begin(); it != nodes.end(); ++it) {
-      if (it->second->getStatus() == false) {
-        s.push(it->second);
-        while (!s.empty()) {
-          Node* cur = s.top();
-          path.push_back(cur->getName()); 
-          s.pop();
-          if (cur->getStatus() == false) {
-            cur->setStatus(true);
-    }
-    std::vector<Node*> neighbors = cur->getNeighbors();
-    for (int i = 0; i < neighbors.size(); i++) {
-      if (neighbors[i]->getStatus() == false) {
-        s.push(neighbors[i]);
-        }
-      }
-    }
-  }
-}
-
-  return path; 
 }

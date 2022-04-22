@@ -47,7 +47,7 @@ Graph buildSmallDisconnectedTestGraph() {
   map.insert({"superman", f});
   return Graph(map); 
 }
-// builds graphs for n <= 26
+// builds disconnected graph of n nodes for n <= 26
 Graph makeTestGraph(int n) {
   std::unordered_map<string, Node*> map; 
   for(int i = 0; i < n; i++) {
@@ -58,9 +58,16 @@ Graph makeTestGraph(int n) {
   return Graph(map); 
 }
 
+/**
+ * Build graph test cases
+ */
 TEST_CASE("Build graph", "[graph][data]") {
   REQUIRE(true); 
 }
+
+/**
+ * DFS test cases
+ */
 TEST_CASE("Small graph dfs", "[graph][traversal]") {
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
@@ -104,7 +111,6 @@ TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
   REQUIRE(graph.dfs("d") == exPected);
 }
 TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
-  
   for (int i = 2; i < 26; i++) {
     Graph graph = makeTestGraph(i);
     REQUIRE(graph.dfs("a").size() == i);
