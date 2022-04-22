@@ -5,12 +5,12 @@ using std::unordered_map;
 
 Graph::Graph(unordered_map<string, Node*> nodes_): nodes(nodes_) {
   // pick a random dfs string
-  srand(time(NULL));
-  auto it = nodes.begin(); 
-  int x = rand() % nodes.size(); 
-  while(x > 0)
-    ++it; 
-  defaultDfs = it->first;
+  // srand(time(NULL));
+  // auto it = nodes.begin(); 
+  // int x = rand() % nodes.size(); 
+  // while(x > 0)
+  //   ++it; 
+  // defaultDfs = it->first;
 }
 
 Graph::~Graph() {
