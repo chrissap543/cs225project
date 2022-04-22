@@ -22,4 +22,4 @@ include(Catch)
 catch_discover_tests(tests)
 
 add_executable(exec ${src_dir}/main.cpp)
-target_link_libraries(exec PRIVATE lib src include)
+target_link_libraries(exec PRIVATE src)
