@@ -1,6 +1,9 @@
 #include "catch/catch.hpp"
-#include "graph.hpp"
-#include "node.hpp"
+// #include "graph.hpp"
+// #include "node.hpp"
+#include "processdata.hpp"
+
+#include <algorithm>
 
 // standard small test graph
 Graph buildSmallTestGraph() {
@@ -115,4 +118,27 @@ TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
     Graph graph = makeTestGraph(i);
     REQUIRE(graph.dfs("a").size() == i);
   }
+}
+
+TEST_CASE("Full scale test", "[graph][traversal][data]") {
+  Graph g = buildGraph("data/fixed_data.csv"); 
+  // cannot build whole dfs by hand
+  // verify that certain nodes are in the traversal
+  std::vector<std::string> dfs = g.dfs(); 
+  const unordered_map<std::string, Node*>& map = g.getNodes(); 
+  // check for nodes listed early in the dataset
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "rddtgaming") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "xboxone") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "ps4") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "cancer") != dfs.end()); 
+  // check nodes in middle of dataset
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "ark") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "bestof2015") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "arkone") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "rootbeer") != dfs.end()); 
+  // check nodes at end of dataset
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "spiderman") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "discordapp") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "peoplewhosayheck") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "nocontract") != dfs.end()); 
 }
