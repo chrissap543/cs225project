@@ -3,7 +3,15 @@
 using std::string; 
 using std::unordered_map; 
 
-Graph::Graph(unordered_map<string, Node*> nodes_): nodes(nodes_) {}
+Graph::Graph(unordered_map<string, Node*> nodes_): nodes(nodes_) {
+  // pick a random dfs string
+  srand(time(NULL));
+  auto it = nodes.begin(); 
+  int x = rand() % nodes.size(); 
+  while(x > 0)
+    ++it; 
+  defaultDfs = it->first;
+}
 
 Graph::~Graph() {
   for(auto ele : nodes) {
@@ -18,7 +26,7 @@ const unordered_map<string, Node*>& Graph::getNodes() const { return nodes; }
 
 std::vector<std::string> Graph::dfs() {
   // one of the first one in csv (chosen arbitrarily)
-  return dfs("ps4"); 
+  return dfs(defaultDfs); 
 }
 
 std::vector<std::string> Graph::dfs(std::string start) {

@@ -3,10 +3,13 @@
 #include "node.hpp"
 
 #include <unordered_map>
+#include <stack>
+#include <stdlib.h>
+#include <time.h>
 
 using std::string; 
 using std::unordered_map; 
-#include <stack>
+
 class Graph {
 public:
   Graph(unordered_map<string, Node*> nodes_); 
@@ -36,4 +39,6 @@ private:
   const int NUM_DATA_POINTS = 55863; // gotten from Stanford SNAP
 
   void dfsUtil(Node* start, std::vector<std::string>& path); 
+
+  std::string defaultDfs; 
 }; 
