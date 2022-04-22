@@ -15,6 +15,7 @@ set(tests_dir ${CMAKE_SOURCE_DIR}/tests)
 
 file(GLOB INCLUDES "includes/*.hpp")
 file(GLOB SOURCES "src/*.cpp")
+add_library(ProjectLib ${SOURCES} ${INCLUDES})
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
@@ -27,4 +28,4 @@ include(Catch)
 catch_discover_tests(tests)
 
 add_executable(exec ${src_dir}/main.cpp)
-target_link_libraries(exec PRIVATE src)
+target_link_libraries(exec PRIVATE src ProjectLib)
