@@ -57,4 +57,4 @@ int main() {
 // std::cout<<vec[6]<<std::endl;
 // std::cout<<vec[7]<<std::endl;
 // std::cout<<vec[8]<<std::endl;
-// }
+}
