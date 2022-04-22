@@ -97,7 +97,7 @@ int** Matrix::shortestPath()
         {
             for(size_t k=0;k<N;k++)
             {
-                if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])&&distMatrix[j][i]!=0&&distMatrix[i][k]!=0)
+                if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])&&(distMatrix[j][i]!=0||distMatrix[i][k]!=0))
                 {
                     distMatrix[j][k]=distMatrix[j][i]+distMatrix[i][k];
                 }
