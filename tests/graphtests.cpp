@@ -2,7 +2,7 @@
 #include "graph.hpp"
 #include "node.hpp"
 
-Graph buildSmallGraph() {
+Graph buildSmallTestGraph() {
   std::unordered_map<string, Node*> map;
   Node* a = new Node("LOL");
   Node* b = new Node("NBA");
@@ -20,10 +20,20 @@ Graph buildSmallGraph() {
   map.insert({"wowthissubexists", d});
   return Graph(map); 
 }
+// builds graphs for n <= 26
+Graph makeTestGraph(int n) {
+  std::unordered_map<string, Node*> map; 
+  for(int i = 0; i < n; i++) {
+    std::string str(1, 'a'+i); 
+    Node* n = new Node(str); 
+    map.insert({n->getName(), n}); 
+  }
+  return Graph(map); 
+}
 
 TEST_CASE("Build graph", "[graph][data]") {
   REQUIRE(true); 
 }
 TEST_CASE("Small graph", "[graph]") {
-  Graph g = buildSmallGraph(); 
+  Graph g = buildSmallTestGraph(); 
 }
