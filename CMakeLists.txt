@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(REDDIT)
 
 # Specify the C++ standard (CMake3+)
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 # Add header files
 file(GLOB INCLUDES "include/*.hpp")
