@@ -3,6 +3,7 @@
 #include <fstream>
 #include <unordered_map>
 #include <string>
+#include <iostream>
 #include <bits/stdc++.h>
 
 class Matrix {
@@ -15,6 +16,8 @@ public:
   void shortestPath(); 
   std::vector<std::string> constructPath(int a, int b); 
   std::vector<std::string> constructPath(std::string a, std::string b); 
+
+  void printAllPaths(); 
 private:
   bool** matrix;
   unsigned short int** distMatrix;

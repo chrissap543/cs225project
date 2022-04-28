@@ -34,4 +34,5 @@ int main() {
   // std::vector<std::string> ans = g.dfs("LOL"); 
   Matrix mat; 
   mat.shortestPath(); 
+  mat.printAllPaths(); 
 }
