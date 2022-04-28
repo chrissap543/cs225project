@@ -20,8 +20,8 @@ public:
   void printAllPaths(); 
 private:
   bool** matrix;
-  unsigned short int** distMatrix;
-  unsigned short int** next; 
+  int** distMatrix;
+  int** next; 
   std::unordered_map<std::string,int> indices;
   std::unordered_map<int,std::string> names;
   int n;

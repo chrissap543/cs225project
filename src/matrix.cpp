@@ -52,11 +52,11 @@ std::string Matrix::name(int a) {
 }
 
 void Matrix::shortestPath() {
-  distMatrix = new unsigned short int*[n];
-  next = new unsigned short int*[n]; 
+  distMatrix = new int*[n];
+  next = new int*[n]; 
   for(size_t i = 0; i < n; i++) {
-    distMatrix[i] = new unsigned short int[n];
-    next[i] = new unsigned short int[n]; 
+    distMatrix[i] = new int[n];
+    next[i] = new int[n]; 
   }
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
@@ -64,15 +64,15 @@ void Matrix::shortestPath() {
         distMatrix[i][j] = 1; 
         next[i][j] = j; 
       } else {
-        distMatrix[i][j] = USHRT_MAX; 
-        next[i][j] = USHRT_MAX; 
+        distMatrix[i][j] = INT_MAX; 
+        next[i][j] = -1; 
       }
     }
   }
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       for(size_t k = 0; k < n; k++) {
-        if(distMatrix[j][i] == USHRT_MAX || distMatrix[i][k] == USHRT_MAX)
+        if(distMatrix[j][i] == INT_MAX || distMatrix[i][k] == INT_MAX)
           continue; 
         if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])) {
           distMatrix[j][k]=distMatrix[j][i]+distMatrix[i][k];
@@ -83,7 +83,7 @@ void Matrix::shortestPath() {
   }
 }
 std::vector<std::string> Matrix::constructPath(int a, int b) {
-  if(next[a][b] == USHRT_MAX)
+  if(next[a][b] == -1)
     return {};
   std::vector<std::string> path = {names[a]}; 
   while(a != b) {
