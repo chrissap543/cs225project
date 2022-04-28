@@ -4,6 +4,7 @@ project(REDDIT)
 
 # Specify the C++ standard (CMake3+)
 add_compile_options(-std=c++14)
+set(CMAKE_CXX_FLAGS "-O3")
 
 # Add header files
 file(GLOB INCLUDES "include/*.hpp")

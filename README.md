@@ -3,7 +3,7 @@
 ## Dataset Acquisition
 We have provided access to the dataset we want to work on in `data/fixed_data.csv`. If you want to verify the creation of this data file, do the following:
 
-Go to the linked Stanford Datasets called the [Reddit Hyperlink Network](http://snap.stanford.edu/data/soc-RedditHyperlinks.html) and select the file `soc-redditHyperlinks-body.tsv`, and move it to 
+Go to the linked Stanford Datasets called the [Reddit Hyperlink Network](http://snap.stanford.edu/data/soc-RedditHyperlinks.html) and select the file `soc-redditHyperlinks-title.tsv`, and move it to 
 `./data/data.tsv`. Then, run 
 ```
 python ./data_preprocessing/main.py
