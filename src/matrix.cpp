@@ -5,6 +5,8 @@ using std::string;
 using std::pair; 
 
 Matrix::Matrix(): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(35776) {
+  // TODO change the dataset for the matrix tests
+  // can use the other dataset to print out the nodes with the most edges
   fstream f("../data/fixed_data.csv");
   int i=0;
   matrix= new bool*[n];

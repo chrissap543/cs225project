@@ -4,8 +4,7 @@
 
 #include <unordered_map>
 #include <stack>
-#include <stdlib.h>
-#include <time.h>
+#include <algorithm>
 
 using std::string; 
 using std::unordered_map; 
@@ -33,12 +32,13 @@ public:
  */
   std::vector<std::string> dfs(Node* start); 
 
+  std::vector<std::string> highestDegree(); 
+
 private:
   unordered_map<string, Node*> nodes; 
 
-  const int NUM_DATA_POINTS = 55863; // gotten from Stanford SNAP
+  const int NUM_DATA_POINTS = 35576; // gotten from Stanford SNAP
 
   void dfsUtil(Node* start, std::vector<std::string>& path); 
 
-  std::string defaultDfs; 
-}; 
+};
