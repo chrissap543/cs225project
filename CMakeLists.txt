@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 project(REDDIT)
 
 # Specify the C++ standard (CMake3+)
-add_compile_options(-std=c++14)
+add_compile_options(-std=c++11)
 set(CMAKE_CXX_FLAGS "-O3")
 
 # Add header files

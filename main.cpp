@@ -7,8 +7,5 @@
 #include <string>
 
 int main() {
-  Graph g = buildGraph("../data/fixed_data.csv"); 
-  auto vect = g.highestDegree(); 
-  for(auto str : vect)
-    std::cout << str << std::endl; 
+  Graph g = buildGraph("../data/new_data.csv"); 
 }
