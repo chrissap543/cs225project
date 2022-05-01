@@ -7,5 +7,7 @@
 #include <string>
 
 int main() {
-  Graph g = buildGraph("../data/new_data.csv"); 
+  Matrix m; 
+  m.shortestPath(); 
+  // m.printAllPaths(); 
 }

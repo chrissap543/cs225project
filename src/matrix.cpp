@@ -1,35 +1,39 @@
 #include "matrix.hpp"
 
-using std::fstream; 
+using std::ifstream; 
 using std::string; 
 using std::pair; 
 
-Matrix::Matrix(): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(35776) {
+Matrix::Matrix(): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(1997) {
   // TODO change the dataset for the matrix tests
   // can use the other dataset to print out the nodes with the most edges
-  fstream f("../data/fixed_data.csv");
-  int i=0;
+  ifstream ifs("../data/new_fixed_data.csv");
+  int i = 0;
   matrix= new bool*[n];
   for(size_t i=0;i<n;i++) {
     matrix[i]=new bool[n];
+    for(size_t j = 0; j < n; j++)
+      matrix[i][j] = false; 
   }
-  while(f.peek()!=EOF) {
-    int x;
-    std::string a,b;
-    f>>x>>a>>b;
-    if(indices.count(a))
+  std::string line; 
+  std::getline(ifs, line); 
+  while(std::getline(ifs, line)) {
+    std::vector<std::string> vect = splitLine(line); 
+    std::string a = vect[0]; 
+    std::string b = vect[1]; 
+    if(indices.find(a) == indices.end())
     {
       indices.insert(pair<string,int>(a,i));
       names.insert(pair<int,string>(i,a));
       i++;
     }
-    if(indices.count(b))
+    if(indices.find(b) == indices.end())
     {
       indices.insert(pair<string,int>(b,i));
       names.insert(pair<int,string>(i,b));
       i++;
     }
-    matrix[indices[a]][indices[b]]=true;
+    matrix[indices[a]][indices[b]] = true;
   }
 }
 
@@ -62,13 +66,18 @@ void Matrix::shortestPath() {
   }
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
-      if(matrix[i][j]) {
-        distMatrix[i][j] = 1; 
+      distMatrix[i][j] = (matrix[i][j]) ? 1 : INT_MAX; 
+      if(matrix[i][j])
         next[i][j] = j; 
-      } else {
-        distMatrix[i][j] = INT_MAX; 
+      else 
         next[i][j] = -1; 
-      }
+    }
+  }
+  bool x = false; 
+  for(size_t i = 0; i < n; i++) {
+    for(size_t j = 0; j < n; j++) {
+      if(distMatrix[i][j] != INT_MAX)
+        x = true; 
     }
   }
   for(size_t i = 0; i < n; i++) {
@@ -100,8 +109,9 @@ std::vector<std::string> Matrix::constructPath(std::string a, std::string b) {
 
 void Matrix::printAllPaths() {
   for(size_t i = 0; i < n; i++) {
-    for(size_t j = 0; j < n; j++)
+    for(size_t j = 0; j < n; j++) {
       std::cout << distMatrix[i][j] << " "; 
+    }
     std::cout << std::endl; 
   }
 }
