@@ -34,14 +34,6 @@ Graph buildSmallDisconnectedTestGraph() {
   Node* d = new Node("wowthissubexists");
   Node* e = new Node("movies");
   Node* f = new Node("superman");
-  a->addNeighbor(c);
-  c->addNeighbor(a);
-  c->addNeighbor(d);
-  d->addNeighbor(c);
-  b->addNeighbor(c);
-  c->addNeighbor(b);
-  e->addNeighbor(f);
-  f->addNeighbor(e);
   map.insert({"LOL", a});
   map.insert({"NBA", b});
   map.insert({"behindthegifs", c});
@@ -71,47 +63,60 @@ TEST_CASE("Build graph", "[graph][data]") {
 /**
  * DFS test cases
  */
-TEST_CASE("Small graph dfs", "[graph][traversal]") {
+TEST_CASE("Small graph dfs1", "[graph][traversal]") {
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
-  REQUIRE(graph.dfs("LOL") == expected);
-
+  std::vector<std::string> dfs = graph.dfs("LOL"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs2", "[graph][traversal]") {
   Graph graph = buildSmallTestGraph(); 
-  std::vector<std::string> expected = {"behindthegifs", "NBA", "wowthissubexists", "LOL"}; 
-  REQUIRE(graph.dfs("behindthegifs") == expected); 
-
+  std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
+  std::vector<std::string> dfs = graph.dfs("behindthegifs"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs3", "[graph][traversal]") {
   Graph graph = buildSmallTestGraph(); 
-  std::vector<std::string> expected = {"NBA", "behindthegifs", "wowthissubexists", "LOL"}; 
-  REQUIRE(graph.dfs("NBA") == expected); 
- 
+  std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
+  std::vector<std::string> dfs = graph.dfs("NBA"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs4", "[graph][traversal]") {
   Graph graph = buildSmallTestGraph(); 
-  std::vector<std::string> expected = {"wowthissubexists", "behindthegifs", "NBA", "LOL"}; 
-  REQUIRE(graph.dfs("wowthissubexists") == expected); 
-
+  std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
+  std::vector<std::string> dfs = graph.dfs("wowthissubexists"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
-TEST_CASE("Small disconnected graph dfs", "[graph][traversal]") {
+
+TEST_CASE("Small disconnected graph dfs1", "[graph][traversal]") {
   Graph graph = buildSmallDisconnectedTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists", "movies", "superman"}; 
-  REQUIRE(graph.dfs("LOL") == expected);
+  std::vector<std::string> dfs = graph.dfs("LOL"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small disconnected graph dfs2", "[graph][traversal]") {
   Graph graph = buildSmallDisconnectedTestGraph(); 
   std::vector<std::string> expected = {"movies", "superman", "behindthegifs", "NBA", "wowthissubexists", "LOL"}; 
-  REQUIRE(graph.dfs("movies") == expected);
+  std::vector<std::string> dfs = graph.dfs("movies"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
+
 TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
   Graph graph = makeTestGraph(12);
-  REQUIRE(graph.dfs("a").size() == 12);
   std::vector<std::string> expected = {"a", "l", "k", "h", "g", "f", "c", "d", "e", "j", "b", "i"}; 
-  REQUIRE(graph.dfs("a") == expected);
-  std::vector<std::string> exPected = {"d", "l", "k", "h", "g", "f", "c", "e", "j", "b", "i", "a"};
-  REQUIRE(graph.dfs("d") == exPected);
+  std::vector<std::string> dfs = graph.dfs("a"); 
+  REQUIRE(dfs.size() == 12); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  dfs = graph.dfs("d"); 
+  for(std::string& str : expected)
+    REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
   for (int i = 2; i < 26; i++) {
@@ -127,18 +132,20 @@ TEST_CASE("Full scale test", "[graph][traversal][data]") {
   std::vector<std::string> dfs = g.dfs(); 
   const unordered_map<std::string, Node*>& map = g.getNodes(); 
   // check for nodes listed early in the dataset
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "rddtgaming") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "xboxone") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "ps4") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "cancer") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "leagueoflegends") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "soccer") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "cfb") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "gamedev") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "dogecoin") != dfs.end()); 
   // check nodes in middle of dataset
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "ark") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "bestof2015") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "arkone") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "rootbeer") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "canada") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "iran") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "civcraft") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "steam") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "mobileweb") != dfs.end()); 
   // check nodes at end of dataset
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "spiderman") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "discordapp") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "peoplewhosayheck") != dfs.end()); 
-  REQUIRE(std::find(dfs.begin(), dfs.end(), "nocontract") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "ripple") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "anxiety") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "dataisbeautiful") != dfs.end()); 
+  REQUIRE(std::find(dfs.begin(), dfs.end(), "mgtow") != dfs.end()); 
 }
