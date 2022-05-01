@@ -53,11 +53,17 @@ Matrix::~Matrix() {
 bool Matrix::isConnectedTo(string a, string b) {
   return matrix[indices[a]][indices[b]];
 }
+bool Matrix::isConnectedTo(int a, int b) {
+  return matrix[a][b]; 
+}
+
 std::string Matrix::name(int a) {
   return names[a];
 }
 
 void Matrix::shortestPath() {
+  calcedShortestPath = true; 
+  
   distMatrix = new int*[n];
   next = new int*[n]; 
   for(size_t i = 0; i < n; i++) {
@@ -67,36 +73,32 @@ void Matrix::shortestPath() {
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       distMatrix[i][j] = (matrix[i][j]) ? 1 : INT_MAX; 
-      if(matrix[i][j])
-        next[i][j] = j; 
-      else 
+      if(distMatrix[i][j == INT_MAX])
         next[i][j] = -1; 
+      else 
+        next[i][j] = j; 
     }
   }
-  bool x = false; 
-  for(size_t i = 0; i < n; i++) {
-    for(size_t j = 0; j < n; j++) {
-      if(distMatrix[i][j] != INT_MAX)
-        x = true; 
-    }
-  }
-  for(size_t i = 0; i < n; i++) {
-    for(size_t j = 0; j < n; j++) {
-      for(size_t k = 0; k < n; k++) {
-        if(distMatrix[j][i] == INT_MAX || distMatrix[i][k] == INT_MAX)
-          continue; 
-        if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])) {
-          distMatrix[j][k]=distMatrix[j][i]+distMatrix[i][k];
-          next[j][k] = distMatrix[j][i]; 
+  for (int k = 0; k < n; k++) {
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (distMatrix[i][k] == INT_MAX || distMatrix[k][j] == INT_MAX)
+          continue;
+        if (distMatrix[i][j] > distMatrix[i][k] + distMatrix[k][j]) {
+          distMatrix[i][j] = distMatrix[i][k] + distMatrix[k][j];
+          next[i][j] = next[i][k];
         }
       }
     }
   }
 }
 std::vector<std::string> Matrix::constructPath(int a, int b) {
+  if(!calcedShortestPath)
+    shortestPath(); 
   if(next[a][b] == -1)
     return {};
   std::vector<std::string> path = {names[a]}; 
+  std::cout << isConnectedTo(a, b) << std::endl; 
   while(a != b) {
     a = next[a][b]; 
     path.push_back(names[a]); 
@@ -114,4 +116,60 @@ void Matrix::printAllPaths() {
     }
     std::cout << std::endl; 
   }
+}
+
+std::vector<std::string> Matrix::mostCentral(size_t num) {
+  if(!calcedShortestPath)
+    shortestPath(); 
+  // calculate centrality of all
+  std::unordered_map<string, int> betweeness; 
+  for(size_t i = 0; i < n; i++) {
+    betweeness.insert({names[i], calcBetweeness(i)}); 
+  }
+  // add first num elements to vector
+  std::vector<std::pair<string, int>> central; 
+  auto it = betweeness.begin(); 
+  for(size_t i = 0; i < num; i++) {
+    central.push_back(*it); 
+    ++it; 
+  }
+  std::sort(central.begin(), central.end(), [](std::pair<string, int>& left, std::pair<string, int>& right) {
+    return left.second < right.second; 
+  });  
+  while(it != betweeness.end()) {
+    if(it->second > central[0].second) {
+      central[0] = *it; 
+      std::sort(central.begin(), central.end(), 
+        [](std::pair<string, int>& left, std::pair<string, int>& right) {
+          return left.second < right.second; 
+      }); 
+    }
+    ++it; 
+  }
+  std::vector<string> toReturn; 
+  for(auto tmp = central.rbegin(); tmp != central.rend(); ++tmp) {
+    toReturn.push_back(tmp->first); 
+  }
+  return toReturn; 
+}
+
+int Matrix::calcBetweeness(int a) {
+  std::string& target = names[a]; 
+  int count = 0; 
+  for(size_t i = 0; i < n; i++) {
+    if(i == a)
+      continue;
+    for(size_t j = 0; j < n; j++) {
+      if(j == a || j == i)
+        continue; 
+      // check if shortest path contains a
+      std::vector<std::string> path = constructPath(i, j); 
+      if(std::find(path.begin(), path.end(), target) != path.end())
+        count++; 
+    }
+  }
+  return count; 
+}
+int Matrix::calcBetweeness(std::string a) {
+  return calcBetweeness(indices[a]); 
 }
