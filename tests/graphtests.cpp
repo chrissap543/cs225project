@@ -1,6 +1,4 @@
 #include "catch2/catch.hpp"
-// #include "graph.hpp"
-// #include "node.hpp"
 #include "processdata.hpp"
 
 #include <algorithm>
@@ -56,8 +54,58 @@ Graph makeTestGraph(int n) {
 /**
  * Build graph test cases
  */
-TEST_CASE("Build graph", "[graph][data]") {
-  REQUIRE(true); 
+TEST_CASE("emtpy csv build graph", "[graph][data]") {
+  REQUIRE_NOTHROW("../tests/test_data/empty.csv"); 
+}
+TEST_CASE("test1.csv build graph", "[graph][data]") {
+  Graph g = buildGraph("../tests/test_data/test1.csv"); 
+
+  Node* a1 = new Node("a1"); 
+  Node* a2 = new Node("a2"); 
+  Node* a3 = new Node("a3"); 
+  Node* a4 = new Node("a4"); 
+
+  a1->addNeighbor(a2); 
+  a2->addNeighbor(a1); 
+  a3->addNeighbor(a1); 
+  a1->addNeighbor(a4); 
+
+  std::unordered_map<string, Node*> map; 
+  map.insert({"a1", a1}); 
+  map.insert({"a2", a2}); 
+  map.insert({"a3", a3}); 
+  map.insert({"a4", a4}); 
+
+  const std::unordered_map<string, Node*>& test = g.getNodes(); 
+  for(auto it = map.begin(); it != map.end(); ++it) {
+    REQUIRE(test.find(it->first) != test.end()); 
+    REQUIRE(*test.find(it->first)->second == *it->second); 
+  }
+}
+TEST_CASE("test2.csv build graph", "[graph][data]") {
+  Graph g = buildGraph("../tests/test_data/test2.csv"); 
+}
+TEST_CASE("Full scale build graph", "[graph][data]") {
+  Graph g = buildGraph("../data/fixed_data.csv"); 
+  // cannot check the whole graph so check that specific nodes in the graph
+  // check for nodes listed early in the dataset
+  const std::unordered_map<string, Node*>& test = g.getNodes(); 
+  REQUIRE(test.find("leagueoflegends") != test.end()); 
+  REQUIRE(test.find("soccer") != test.end()); 
+  REQUIRE(test.find("cfb") != test.end()); 
+  REQUIRE(test.find("gamedev") != test.end()); 
+  REQUIRE(test.find("dogecoin") != test.end()); 
+  // check nodes in middle of dataset
+  REQUIRE(test.find("canada") != test.end()); 
+  REQUIRE(test.find("iran") != test.end()); 
+  REQUIRE(test.find("civcraft") != test.end()); 
+  REQUIRE(test.find("steam") != test.end()); 
+  REQUIRE(test.find("mobileweb") != test.end()); 
+  // check nodes at end of dataset
+  REQUIRE(test.find("ripple") != test.end()); 
+  REQUIRE(test.find("anxiety") != test.end()); 
+  REQUIRE(test.find("dataisbeautiful") != test.end()); 
+  REQUIRE(test.find("mgtow") != test.end()); 
 }
 
 /**
