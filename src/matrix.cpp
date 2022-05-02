@@ -144,6 +144,20 @@ std::vector<std::string> Matrix::mostCentral(size_t num) {
           return left.second < right.second; 
       }); 
     }
+<<<<<<< HEAD
+    for(size_t i=0;i<N;i++)
+    {
+        for(size_t j=0;j<N;j++)
+        {
+            for(size_t k=0;k<N;k++)
+            {
+                if((distMatrix[j][k]>distMatrix[j][i]+distMatrix[i][k])&&(distMatrix[j][i]!=0||distMatrix[i][k]!=0))
+                {
+                    distMatrix[j][k]=distMatrix[j][i]+distMatrix[i][k];
+                }
+            }
+        }
+=======
     ++it; 
   }
   std::vector<string> toReturn; 
@@ -166,6 +180,7 @@ int Matrix::calcBetweeness(int a) {
       std::vector<std::string> path = constructPath(i, j); 
       if(std::find(path.begin(), path.end(), target) != path.end())
         count++; 
+>>>>>>> 9ba36c71a7c706bfd0c6470363ee583d8e91a7d7
     }
   }
   return count; 
