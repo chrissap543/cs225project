@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Node {
 public:
@@ -14,6 +15,8 @@ public:
   void addNeighbor(Node* node); 
   bool getStatus();
   void setStatus(bool status);
+  bool operator==(const Node& n) const; 
+
 private:
   std::string name; 
   std::vector<Node*> neighbors;
