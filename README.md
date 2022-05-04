@@ -1,3 +1,6 @@
+# Organization
+The code is in the `include` and `source` directories. The tests are in the `tests` directory. The data is in the `data` directory and the data preprocessing scripts are in the `data_preprocessing` directory. The final deliverables are in in `documents/deliverables`. 
+
 # Building This Project
 
 ## Dataset Acquisition
@@ -39,5 +42,30 @@ To build the test suite, run
 
 To run the test suite, run
 ```
-./bin/test
+./test
+```
+Note that we provide a number of different tags for our test cases. 
+For the adjacency list graph test cases, run
+```
+./test [graph] 
+```
+For the data processing test cases, run
+```
+./test [data]
+```
+For the only the helper method data processing test cases (not reading in files), run
+```
+./test [processing]
+```
+For the depth first search test cases, run
+```
+./test [traversal]
+```
+For the Floyd-Warshall test cases, run
+```
+...
+```
+For the betweeness centrality test cases, run
+```
+...
 ```
