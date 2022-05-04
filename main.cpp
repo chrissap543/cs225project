@@ -4,35 +4,84 @@
 #include "processdata.hpp"
 
 #include <iostream>
-#include <string>
-#include <chrono>
+#include <sstream>
 
-using std::chrono::high_resolution_clock; 
-using std::chrono::duration_cast;
-using std::chrono::duration;
-using std::chrono::milliseconds;
+void printHelp(); 
+char* getFlagOption(char** begin, char** end, const std::string& option); 
+bool hasFlag(char** begin, char** end, const std::string& option); 
 
-int main() {
-  auto t1 = high_resolution_clock::now(); 
-  Matrix m; 
-  auto t2 = high_resolution_clock::now(); 
-  duration<double, std::milli> ms_double = t2 - t1;
-  std::cout << "constructor completed in " << ms_double.count() 
-    << "ms"  << std::endl; 
+int main(int argc, char **argv) {
+  if(argc < 2) {
+    std::cerr << "Usage: " << argv[0] << "[flags] (use -h for help)" << std::endl; 
+    return -1; 
+  }
 
-  t1 = high_resolution_clock::now(); 
-  m.shortestPath(); 
-  t2 = high_resolution_clock::now(); 
-  ms_double = t2 - t1;
-  std::cout << "floyd warshall completed in " << ms_double.count() 
-    << "ms" << std::endl; 
+  // check for help flag
+  if(hasFlag(argv, argv+argc, "-h")) {
+    printHelp(); 
+    if(argc > 2) {
+      std::cerr << "Do not use help with other arguments" << std::endl;
+      return -1; 
+    }
+    return 0; 
+  }
 
-  t1 = high_resolution_clock::now(); 
-  std::vector<std::string> central = m.mostCentral(5); 
-  t2 = high_resolution_clock::now(); 
-  ms_double = t2 - t1; 
-  std::cout << "betweeness completed in " << ms_double.count() 
-    << "ms" << std::endl; 
-  for(auto x : central)
-    std::cout << x << std::endl; 
+  std::stringstream ss; 
+  // redirect the buffer
+  auto old_buf = std::cout.rdbuf(ss.rdbuf()); 
+  bool tostdout = true; 
+  // check for output flag
+  std::string output_file = ""; 
+  if(hasFlag(argv, argv+c, "-o")) {
+    char* filename = getFlagOption(argv, argv+c, "-o"); 
+    if(!filename) {
+      std::cerr << "No output file specified after flag" << std::endl; 
+      return -1; 
+    }
+    tostdout = false; 
+    output_file = filename; 
+  }
+
+  // check for read flag
+  std::string input_file = "";
+  if(hasFlag(argv, argv+c, "-r")) {
+    char* filename = getFlagOption(argv, argv+argc, "-r"); 
+    if(!filename) {
+      std::cerr << "No input file specified after flag" << std::endl; 
+      return -1; 
+    }
+    input_file = filename; 
+  }
+
+  // check for which algorithm to run
+
+  if(tostdout) {
+    std::cout.rdbuf(old_buf); 
+    std::cout << ss.str() << std::endl; 
+  } else {
+    // write to a file
+    std::ofstream ofs(output_file); 
+    ofs << ss.str(); 
+  }
+  return 0; 
+}
+
+void printHelp() {
+  std::cout << "Usage: " << argv[0] << "[flags]" << std::endl; 
+  std::cout << "Flags:\n-h\thelp" << std::endl; 
+  std::cout << "-t\tdepth first search" << std::endl; 
+  std::cout << "-f\tFloyd-Warshall" << std::endl; 
+  std::cout << "-b\tbetweeness centrality" << std::endl; 
+  std::cout << "-o\toutput to a file" << std::endl; 
+  std::cout << "-r\tread from a file" << std::endl; 
+}
+
+char* getFlagOption(char** begin, char** end, const std::string& option) {
+  auto it = std::find(begin, end, option); 
+  if(it != end && ++it != end)
+    return *it; 
+  return 0; 
+}
+bool hasFlag(char** begin, char** end, const std::string& option) {
+  return std::find(begin, end, option) != end; 
 }

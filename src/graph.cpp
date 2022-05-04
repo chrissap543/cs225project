@@ -45,6 +45,7 @@ void Graph::dfsUtil(Node* start, std::vector<std::string>& path) {
     Node* cur = s.top();
     s.pop();
     if (cur->getStatus() == false) {
+      std::cout << cur->getName() << std::endl; 
       path.push_back(cur->getName()); 
       cur->setStatus(true);
     }
@@ -57,15 +58,15 @@ void Graph::dfsUtil(Node* start, std::vector<std::string>& path) {
   }
 }
 
-std::vector<string> Graph::highestDegree() {
+std::vector<string> Graph::highestDegree(int num) {
   // build a map of nodes and sizes
   unordered_map<string, unsigned int> degrees; 
   for(auto it = nodes.begin(); it != nodes.end(); ++it)
     degrees.insert({it->first, it->second->getNeighbors().size()}); 
-  // add the first 2000 elements vector
+  // add the first num elements vector
   std::vector<std::pair<string, unsigned int>> highestDeg; 
   auto it = degrees.begin(); 
-  for(size_t i = 0; i < 2000; i++) {
+  for(size_t i = 0; i < num; i++) {
     highestDeg.push_back(*it); 
     ++it; 
   }
