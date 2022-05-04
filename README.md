@@ -1,3 +1,6 @@
+# Organization
+The code is in the `include` and `source` directories. The tests are in the `tests` directory. The data is in the `data` directory and the data preprocessing scripts are in the `data_preprocessing` directory. The final deliverables are in in `documents/deliverables`. 
+
 # Building This Project
 
 ## Dataset Acquisition
@@ -20,7 +23,7 @@ Then
 ```
 cmake ..
 ```
-If your CMake is below version 3.1, try
+If your default CMake is below version 3.1, try
 ```
 cmake3 ..
 ```
@@ -31,13 +34,50 @@ make
 ### Executable
 To run the executable, run
 ```
+./exec [flags]
+```
+By default, 
+```
 ./exec
 ```
+will not do anything. 
+We specify a number of flags 
+* -h: prints help info
+* -t: runs depth first search
+* -f: runs Floyd-Warshall algorithm
+* -b: runs betweeness centrality
+* -o: output to a file
+* -r: read from given file
+
+Here are some example usages:
+```
+./exec -h # prints help info
+./exec -t -r data.csv # run depth first search on data.csv
+./exec -f # check if path from all subreddits to all others
+./exec -f <subreddit_1> <subreddit_2> # if path, prints the path between given subreddits
+./exec -b 25 # runs betweeness centrality, prints top 25 central nodes
+./exec -b -o out.txt # runs betweeness centrality, output to out.txt
+```
+Note that the subreddits that can be passed with 
+```
+./exec -f <subreddit_1> <subreddit_2>
+```
+must be of the top 2000 most subscribed subreddits. You can find a list of those at `data/new_matrix_data.txt`. 
 
 ### Test Suite
 To build the test suite, run
 
 To run the test suite, run
 ```
-./bin/test
+./test
+```
+Note that we provide a number of different tags for our test cases. 
+For the adjacency list graph test cases, run
+```
+./test [graph] # adjacency list graph
+./test [data] # data processing
+./test [processing] # helper method data processing
+./test [traversal] # depth first search
+... # Floyd-Warshall
+... # Betweeness Centrality
 ```
