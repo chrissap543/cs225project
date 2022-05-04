@@ -4,10 +4,10 @@ using std::ifstream;
 using std::string; 
 using std::pair; 
 
-Matrix::Matrix(): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(1997) {
+Matrix::Matrix(std::string file_name, int n): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(n) {
   // TODO change the dataset for the matrix tests
   // can use the other dataset to print out the nodes with the most edges
-  ifstream ifs("../data/new_fixed_data.csv");
+  ifstream ifs(file_name);
   int i = 0;
   matrix= new bool*[n];
   for(size_t i=0;i<n;i++) {

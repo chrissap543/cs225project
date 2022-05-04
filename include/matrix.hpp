@@ -10,7 +10,7 @@
 
 class Matrix {
 public:
-  Matrix();
+  Matrix(std::string file_name, int n);
   ~Matrix();
   std::string name(int a); 
   bool isConnectedTo(std::string a, std::string b);
