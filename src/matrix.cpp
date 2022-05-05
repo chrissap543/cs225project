@@ -59,6 +59,11 @@ bool Matrix::isConnectedTo(int a, int b) {
   return matrix[a][b]; 
 }
 
+std::unordered_map<std::string,int> Matrix::getReddits()
+{
+  return indices;
+}
+
 std::string Matrix::name(int a) {
   return names[a];
 }
@@ -75,7 +80,7 @@ void Matrix::shortestPath() {
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       distMatrix[i][j] = (matrix[i][j]) ? 1 : INT_MAX; 
-      if(distMatrix[i][j == INT_MAX])
+      if(distMatrix[i][j] == INT_MAX)
         next[i][j] = -1; 
       else 
         next[i][j] = j; 
@@ -100,7 +105,7 @@ std::vector<std::string> Matrix::constructPath(int a, int b) {
   if(next[a][b] == -1)
     return {};
   std::vector<std::string> path = {names[a]}; 
-  std::cout << isConnectedTo(a, b) << std::endl; 
+  //std::cout << isConnectedTo(a, b) << std::endl; 
   while(a != b) {
     a = next[a][b]; 
     path.push_back(names[a]); 
@@ -166,4 +171,9 @@ int Matrix::calcBetweeness(int a) {
 }
 int Matrix::calcBetweeness(std::string a) {
   return calcBetweeness(indices[a]); 
+}
+
+int Matrix::getSize() const
+{
+  return n;
 }

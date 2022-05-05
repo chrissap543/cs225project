@@ -14,6 +14,7 @@ public:
   ~Matrix();
   std::string name(int a); 
   bool isConnectedTo(std::string a, std::string b);
+  std::unordered_map<std::string,int> getReddits();
   bool isConnectedTo(int a, int b); 
 
   void shortestPath(); 
@@ -24,6 +25,7 @@ public:
 
   bool** getMatrix() const; 
   int** getDist() const;  
+  int getSize() const;  
 private:
   int calcBetweeness(std::string a); 
   int calcBetweeness(int a); 
