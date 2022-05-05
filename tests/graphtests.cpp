@@ -1,6 +1,6 @@
 #include "catch2/catch.hpp"
 #include "processdata.hpp"
-
+#include "matrix.hpp"
 #include <algorithm>
 
 // standard small test graph
@@ -199,6 +199,9 @@ TEST_CASE("Full scale test", "[graph][traversal][data]") {
 }
 
 TEST_CASE("adjacency matrix test", "[graph][traversal][data]") {
+  Matrix m("../data/sample_data_test.csv", 4);
+  bool** a = m.getMatrix();
+
 
 }
 
