@@ -72,7 +72,6 @@ To run the test suite, run
 ./test
 ```
 Note that we provide a number of different tags for our test cases. 
-For the adjacency list graph test cases, run
 ```
 ./test [graph] # adjacency list graph
 ./test [data] # data processing
