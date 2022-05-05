@@ -1,6 +1,8 @@
 #pragma once
 
 #include "graph.hpp"
+#include "matrix.hpp"
+
 #include "node.hpp"
 #include "util.hpp" 
 
