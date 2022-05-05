@@ -16,7 +16,7 @@ TEST_CASE("test2.csv build matrix", "[matrix][data]") {
   Matrix m("../tests/test_data/test2.csv",0); 
 }
 TEST_CASE("Full scale build matrix", "[matrix][data]") {
-  Matrix m("../data/new_fixed_data.csv",2000); 
+  Matrix m("../data/new_fixed_data.csv",1997); 
   // cannot check the whole graph so check that specific nodes in the graph
   // check for nodes listed early in the dataset
   const std::unordered_map<string, int>& test = m.getReddits(); 
@@ -37,7 +37,7 @@ TEST_CASE("Full scale build matrix", "[matrix][data]") {
   REQUIRE(test.find("mgtow") != test.end());
 }
 TEST_CASE("Check For Connections", "[matrix][data]") {
-  Matrix m("../data/new_fixed_data.csv",2000); 
+  Matrix m("../data/new_fixed_data.csv",1997); 
   std::ifstream ifs("../data/new_fixed_data.csv");
   // cannot check the whole graph so check that specific nodes in the graph
   // check for nodes listed early in the dataset
