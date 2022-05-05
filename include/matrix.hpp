@@ -29,6 +29,7 @@ public:
   bool** getMatrix() const; 
   int** getDist() const;  
   int getSize() const;  
+  void printAllPaths();
 private:
   int calcBetweeness(std::string a); 
   int calcBetweeness(int a); 
