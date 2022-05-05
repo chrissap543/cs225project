@@ -78,6 +78,7 @@ For the adjacency list graph test cases, run
 ./test [data] # data processing
 ./test [processing] # helper method data processing
 ./test [traversal] # depth first search
-... # Floyd-Warshall
-... # Betweeness Centrality
+./test [matrix] # adjacency matrix
+./test [apsp] # Floyd-Warshall (all pair shortest path)
+./test [between] # Betweeness Centrality
 ```
