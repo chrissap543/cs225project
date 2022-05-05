@@ -2,6 +2,7 @@
 #include "processdata.hpp"
 #include "matrix.hpp"
 #include <algorithm>
+#include "tests_helper.h"
 
 // standard small test graph
 Graph buildSmallTestGraph() {
@@ -199,16 +200,46 @@ TEST_CASE("Full scale test", "[graph][traversal][data]") {
 }
 
 TEST_CASE("adjacency matrix test", "[graph][traversal][data]") {
-  Matrix m("../data/sample_data_test.csv", 4);
+  int n = 4;
+  Matrix m("../tests/test_data/sampe_data_test.csv", n);
   bool** a = m.getMatrix();
-
-
+  bool sol[4][4] = {{0, 1, 0, 0}, \
+    { 1, 0, 0, 0}, \
+    { 0, 0, 0, 1}, \
+    { 0, 0, 0, 0}};
+     exactMatrix(a, sol, 4);
 }
 
 TEST_CASE("adjacency matrix test2", "[graph][traversal][data]") {
-
+  int n = 5;
+  Matrix m("../tests/test_data/sampe_data_2.csv", n);
+  bool** a = m.getMatrix();
+  bool sol[5][5] = {{0, 1, 0, 0, 1}, \
+    { 0, 0, 1, 0, 0}, \
+    { 0, 0, 0, 1, 0}, \
+    { 0, 0, 0, 0, 1}
+    {0, 0, 0, 0, 0}};
 }
 
-TEST_CASE("Shortest distance matrix test", "[graph][traversal][data]") {
+TEST_CASE("Shortest distance matrix test2", "[graph][traversal][data]") {
+  int n = 4;
+  Matrix m("../tests/test_data/sampe_data_test.csv", n);
+  int** a = m.getDist();
+ 
+}
 
+
+TEST_CASE("Shortest distance matrix test2", "[graph][traversal][data]") {
+    int n = 5;
+  Matrix m("../tests/test_data/sampe_data_2.csv", n);
+  int** a = m.getDist();
+}
+
+TEST_CASE("betwness centrality public test", "[graph][traversal][data]") {
+    int n = 5;
+  Matrix m("../tests/test_data/sampe_data_2.csv", n);
+  
+
+
+  
 }

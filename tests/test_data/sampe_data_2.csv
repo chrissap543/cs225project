@@ -1,4 +1,6 @@
 ,SOURCE_SUBREDDIT,TARGET_SUBREDDIT
-0,abc,def
-1,def,abc
-2,jhk,llk
+0,a, b
+1,b, c
+2,c, d
+3,a, e
+4,d, e

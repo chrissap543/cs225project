@@ -35,16 +35,16 @@ int main() {
   //   << "ms" << std::endl; 
   // for(auto x : central)
   //   std::cout << x << std::endl; 
-  int n = 2; 
-  Matrix m("../tests/test_data/sampe_data_test.csv", n);
+  int n = 5; 
+  Matrix m("../tests/test_data/sampe_data_2.csv", n);
   bool** a = m.getMatrix();
+
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
       std::cout << a[i][j] << std::endl; 
     }
   }
-  // int row = sizeof(a)/sizeof(a[0]);
-  // std::cout<< row <<std::endl;
+
   return 0;
 }
 
