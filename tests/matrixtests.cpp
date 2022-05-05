@@ -53,7 +53,7 @@ TEST_CASE("Check For Connections", "[matrix][data]") {
   }
 }
 TEST_CASE("Check Valid Paths", "[matrix][data]") {
-  Matrix m("../data/new_fixed_data.csv",2000); 
+  Matrix m("../data/new_fixed_data.csv",1997); 
   // cannot check the whole graph so check that specific nodes in the graph
   // check for nodes listed early in the dataset
   m.shortestPath();
@@ -73,16 +73,16 @@ TEST_CASE("Check Valid Paths", "[matrix][data]") {
 }
 
 TEST_CASE("Check for Correct Path", "[matrix][data]") {
-  Matrix m("../data/new_fixed_data.csv",2000); 
+  Matrix m("../data/new_fixed_data.csv",1997); 
   // cannot check the whole graph so check that specific nodes in the graph
   // check for nodes listed early in the dataset
   m.shortestPath();
   int**d=m.getDist();
   bool**con=m.getMatrix();
   srand (time(NULL));
-  for(size_t a=0;a<2000;a++)
+  for(size_t a=0;a<1997;a++)
   {
-    for(size_t b=0;b<2000;b++)
+    for(size_t b=0;b<1997;b++)
     {
         if(d[a][b]!=INT_MAX)
         {
