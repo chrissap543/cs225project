@@ -4,10 +4,8 @@ using std::ifstream;
 using std::string; 
 using std::pair; 
 
-Matrix::Matrix(): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(1997) {
-  // TODO change the dataset for the matrix tests
-  // can use the other dataset to print out the nodes with the most edges
-  ifstream ifs("../data/new_fixed_data.csv");
+Matrix::Matrix(std::string file_name, int n): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(n) {
+  ifstream ifs(file_name);
   int i = 0;
   matrix= new bool*[n];
   for(size_t i=0;i<n;i++) {
@@ -50,11 +48,20 @@ Matrix::~Matrix() {
   if(next != nullptr) delete[] next; 
 }
 
+bool** Matrix::getMatrix() const { return matrix; }
+
+int** Matrix::getDist() const { return distMatrix; }
+
 bool Matrix::isConnectedTo(string a, string b) {
   return matrix[indices[a]][indices[b]];
 }
 bool Matrix::isConnectedTo(int a, int b) {
   return matrix[a][b]; 
+}
+
+std::unordered_map<std::string,int> Matrix::getReddits()
+{
+  return indices;
 }
 
 std::string Matrix::name(int a) {
@@ -77,7 +84,7 @@ void Matrix::shortestPath() {
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       distMatrix[i][j] = (matrix[i][j]) ? 1 : INT_MAX; 
-      if(distMatrix[i][j == INT_MAX])
+      if(distMatrix[i][j] == INT_MAX)
         next[i][j] = -1; 
       else 
         next[i][j] = j; 
@@ -102,7 +109,7 @@ std::vector<std::string> Matrix::constructPath(int a, int b) {
   if(next[a][b] == -1)
     return {};
   std::vector<std::string> path = {names[a]}; 
-  std::cout << isConnectedTo(a, b) << std::endl; 
+  //std::cout << isConnectedTo(a, b) << std::endl; 
   while(a != b) {
     a = next[a][b]; 
     path.push_back(names[a]); 
@@ -191,4 +198,9 @@ int Matrix::calcBetweeness(int a) {
 }
 int Matrix::calcBetweeness(std::string a) {
   return calcBetweeness(indices[a]); 
+}
+
+int Matrix::getSize() const
+{
+  return n;
 }

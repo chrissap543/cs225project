@@ -1,6 +1,5 @@
 #include "catch2/catch.hpp"
 #include "processdata.hpp"
-
 #include <algorithm>
 
 // standard small test graph

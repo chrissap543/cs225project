@@ -10,12 +10,13 @@
 
 class Matrix {
 public:
-  Matrix();
+  Matrix(std::string file_name, int n);
   ~Matrix();
   std::string name(int a); 
   int size();
    
   bool isConnectedTo(std::string a, std::string b);
+  std::unordered_map<std::string,int> getReddits();
   bool isConnectedTo(int a, int b); 
 
   void shortestPath(); 
@@ -25,7 +26,9 @@ public:
 
   std::vector<std::string> mostCentral(size_t num); 
 
-  void printAllPaths(); 
+  bool** getMatrix() const; 
+  int** getDist() const;  
+  int getSize() const;  
 private:
   int calcBetweeness(std::string a); 
   int calcBetweeness(int a); 
