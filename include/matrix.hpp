@@ -13,12 +13,15 @@ public:
   Matrix();
   ~Matrix();
   std::string name(int a); 
+  int size();
+   
   bool isConnectedTo(std::string a, std::string b);
   bool isConnectedTo(int a, int b); 
 
   void shortestPath(); 
   std::vector<std::string> constructPath(int a, int b); 
   std::vector<std::string> constructPath(std::string a, std::string b); 
+  bool isAllConnected(); 
 
   std::vector<std::string> mostCentral(size_t num); 
 

@@ -61,6 +61,10 @@ std::string Matrix::name(int a) {
   return names[a];
 }
 
+int Matrix::size() {
+  return n; 
+}
+
 void Matrix::shortestPath() {
   calcedShortestPath = true; 
   
@@ -116,6 +120,20 @@ void Matrix::printAllPaths() {
     }
     std::cout << std::endl; 
   }
+}
+
+bool Matrix::isAllConnected() {
+  if(!calcedShortestPath)
+    shortestPath(); 
+  for(size_t i = 0; i < n; i++) {
+    for(size_t j = 0; j < n; j++) {
+      if(i == j)
+        continue; 
+      if(distMatrix[i][j] == INT_MAX)
+        return false; 
+    }
+  }
+  return true; 
 }
 
 std::vector<std::string> Matrix::mostCentral(size_t num) {

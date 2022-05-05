@@ -16,6 +16,7 @@ public:
   ~Graph(); 
 
   const unordered_map<string, Node*>& getNodes() const; 
+  const size_t getSize() const; 
 
   std::vector<std::string> dfs(); 
 

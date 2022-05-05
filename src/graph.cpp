@@ -15,6 +15,7 @@ Graph::~Graph() {
 }
 
 const unordered_map<string, Node*>& Graph::getNodes() const { return nodes; }
+const size_t Graph::getSize() const { return nodes.size(); }
 
 std::vector<std::string> Graph::dfs() {
   // one of the first one in csv (chosen arbitrarily)
