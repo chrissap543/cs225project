@@ -50,6 +50,10 @@ Matrix::~Matrix() {
   if(next != nullptr) delete[] next; 
 }
 
+bool** Matrix::getMatrix() const { return matrix; }
+
+int** Matrix::getDist() const { return distMatrix; }
+
 bool Matrix::isConnectedTo(string a, string b) {
   return matrix[indices[a]][indices[b]];
 }
@@ -107,15 +111,6 @@ std::vector<std::string> Matrix::constructPath(int a, int b) {
 }
 std::vector<std::string> Matrix::constructPath(std::string a, std::string b) {
   return constructPath(indices[a], indices[b]); 
-}
-
-void Matrix::printAllPaths() {
-  for(size_t i = 0; i < n; i++) {
-    for(size_t j = 0; j < n; j++) {
-      std::cout << distMatrix[i][j] << " "; 
-    }
-    std::cout << std::endl; 
-  }
 }
 
 std::vector<std::string> Matrix::mostCentral(size_t num) {

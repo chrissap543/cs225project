@@ -22,7 +22,8 @@ public:
 
   std::vector<std::string> mostCentral(size_t num); 
 
-  void printAllPaths(); 
+  bool** getMatrix() const; 
+  int** getDist() const;  
 private:
   int calcBetweeness(std::string a); 
   int calcBetweeness(int a); 
