@@ -14,7 +14,7 @@ using std::chrono::milliseconds;
 
 int main() {
   auto t1 = high_resolution_clock::now(); 
-  Matrix m; 
+  Matrix m("../data/new_fixed_data.csv",2000); 
   auto t2 = high_resolution_clock::now(); 
   duration<double, std::milli> ms_double = t2 - t1;
   std::cout << "constructor completed in " << ms_double.count() 
