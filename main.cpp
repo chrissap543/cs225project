@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sstream>
 
-void printHelp(); 
+void printHelp(char** argv); 
 char* getFlagOption(char** begin, char** end, const std::string& option); 
 bool hasFlag(char** begin, char** end, const std::string& option); 
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
 
   // check for help flag
   if(hasFlag(argv, argv+argc, "-h")) {
-    printHelp(); 
+    printHelp(argv); 
     if(argc > 2) {
       std::cerr << "Do not use help with other arguments" << std::endl;
       return -1; 
@@ -32,8 +32,8 @@ int main(int argc, char **argv) {
   bool tostdout = true; 
   // check for output flag
   std::string output_file = ""; 
-  if(hasFlag(argv, argv+c, "-o")) {
-    char* filename = getFlagOption(argv, argv+c, "-o"); 
+  if(hasFlag(argv, argv+argc, "-o")) {
+    char* filename = getFlagOption(argv, argv+argc, "-o"); 
     if(!filename) {
       std::cerr << "No output file specified after flag" << std::endl; 
       return -1; 
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 
   // check for read flag
   std::string input_file = "";
-  if(hasFlag(argv, argv+c, "-r")) {
+  if(hasFlag(argv, argv+argc, "-r")) {
     char* filename = getFlagOption(argv, argv+argc, "-r"); 
     if(!filename) {
       std::cerr << "No input file specified after flag" << std::endl; 
@@ -54,6 +54,22 @@ int main(int argc, char **argv) {
   }
 
   // check for which algorithm to run
+  bool foundAlgo = false; 
+  if(hasFlag(argv, argv+argc, "-t")) {
+    foundAlgo = true; 
+  }
+  if(hasFlag(argv, argv+argc, "-f")) {
+    if(foundAlgo) {
+      std::err << "Run one algorithm at a time" << std::endl; 
+      return -1; 
+    }
+  }
+  if(hasFlag(argv, argv+argc, "-b")) {
+    if(foundAlgo) {
+      std::err << "Run one algorithm at a time" << std::endl; 
+      return -1; 
+    }
+  }
 
   if(tostdout) {
     std::cout.rdbuf(old_buf); 
@@ -66,8 +82,8 @@ int main(int argc, char **argv) {
   return 0; 
 }
 
-void printHelp() {
-  std::cout << "Usage: " << argv[0] << "[flags]" << std::endl; 
+void printHelp(char** argv) {
+  std::cout << "Usage: " << argv[0] << " [flags]" << std::endl; 
   std::cout << "Flags:\n-h\thelp" << std::endl; 
   std::cout << "-t\tdepth first search" << std::endl; 
   std::cout << "-f\tFloyd-Warshall" << std::endl; 
