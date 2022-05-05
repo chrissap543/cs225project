@@ -1,0 +1,7 @@
+,SOURCE_SUBREDDIT,TARGET_SUBREDDIT
+0,abc,def
+1,def,ghl
+2,abd,ghl
+3,cdf,kla
+4,kla,abc
+5,kda,kla
