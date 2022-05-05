@@ -1,5 +1,6 @@
 #include "catch2/catch.hpp"
 #include "processdata.hpp"
+
 #include <algorithm>
 
 // standard small test graph
@@ -111,6 +112,7 @@ TEST_CASE("Full scale build graph", "[graph][data]") {
  * DFS test cases
  */
 TEST_CASE("Small graph dfs1", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
   std::vector<std::string> dfs = graph.dfs("LOL"); 
@@ -118,6 +120,7 @@ TEST_CASE("Small graph dfs1", "[graph][traversal]") {
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs2", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
   std::vector<std::string> dfs = graph.dfs("behindthegifs"); 
@@ -125,6 +128,7 @@ TEST_CASE("Small graph dfs2", "[graph][traversal]") {
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs3", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
   std::vector<std::string> dfs = graph.dfs("NBA"); 
@@ -132,6 +136,7 @@ TEST_CASE("Small graph dfs3", "[graph][traversal]") {
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small graph dfs4", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists"}; 
   std::vector<std::string> dfs = graph.dfs("wowthissubexists"); 
@@ -140,6 +145,7 @@ TEST_CASE("Small graph dfs4", "[graph][traversal]") {
 }
 
 TEST_CASE("Small disconnected graph dfs1", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallDisconnectedTestGraph(); 
   std::vector<std::string> expected = {"LOL", "behindthegifs", "NBA", "wowthissubexists", "movies", "superman"}; 
   std::vector<std::string> dfs = graph.dfs("LOL"); 
@@ -147,6 +153,7 @@ TEST_CASE("Small disconnected graph dfs1", "[graph][traversal]") {
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small disconnected graph dfs2", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = buildSmallDisconnectedTestGraph(); 
   std::vector<std::string> expected = {"movies", "superman", "behindthegifs", "NBA", "wowthissubexists", "LOL"}; 
   std::vector<std::string> dfs = graph.dfs("movies"); 
@@ -155,6 +162,7 @@ TEST_CASE("Small disconnected graph dfs2", "[graph][traversal]") {
 }
 
 TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph graph = makeTestGraph(12);
   std::vector<std::string> expected = {"a", "l", "k", "h", "g", "f", "c", "d", "e", "j", "b", "i"}; 
   std::vector<std::string> dfs = graph.dfs("a"); 
@@ -166,6 +174,7 @@ TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
 }
 TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
+  std::cout.setstate(std::ios_base::failbit); 
   for (int i = 2; i < 26; i++) {
     Graph graph = makeTestGraph(i);
     REQUIRE(graph.dfs("a").size() == i);
@@ -173,6 +182,7 @@ TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
 }
 
 TEST_CASE("Full scale test", "[graph][traversal][data]") {
+  std::cout.setstate(std::ios_base::failbit); 
   Graph g = buildGraph("../data/fixed_data.csv"); 
   // cannot build whole dfs by hand
   // verify that certain nodes are in the traversal

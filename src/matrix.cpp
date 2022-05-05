@@ -120,15 +120,6 @@ std::vector<std::string> Matrix::constructPath(std::string a, std::string b) {
   return constructPath(indices[a], indices[b]); 
 }
 
-void Matrix::printAllPaths() {
-  for(size_t i = 0; i < n; i++) {
-    for(size_t j = 0; j < n; j++) {
-      std::cout << distMatrix[i][j] << " "; 
-    }
-    std::cout << std::endl; 
-  }
-}
-
 bool Matrix::isAllConnected() {
   if(!calcedShortestPath)
     shortestPath(); 
