@@ -13,6 +13,8 @@ public:
   Matrix(std::string file_name, int n);
   ~Matrix();
   std::string name(int a); 
+  int size();
+   
   bool isConnectedTo(std::string a, std::string b);
   std::unordered_map<std::string,int> getReddits();
   bool isConnectedTo(int a, int b); 
@@ -20,6 +22,7 @@ public:
   void shortestPath(); 
   std::vector<std::string> constructPath(int a, int b); 
   std::vector<std::string> constructPath(std::string a, std::string b); 
+  bool isAllConnected(); 
 
   std::vector<std::string> mostCentral(size_t num); 
 

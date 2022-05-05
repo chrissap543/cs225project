@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <stack>
 #include <algorithm>
+#include <iostream>
 
 using std::string; 
 using std::unordered_map; 
@@ -15,6 +16,7 @@ public:
   ~Graph(); 
 
   const unordered_map<string, Node*>& getNodes() const; 
+  const size_t getSize() const; 
 
   std::vector<std::string> dfs(); 
 
@@ -32,7 +34,7 @@ public:
  */
   std::vector<std::string> dfs(Node* start); 
 
-  std::vector<std::string> highestDegree(); 
+  std::vector<std::string> highestDegree(int num); 
 
 private:
   unordered_map<string, Node*> nodes; 
