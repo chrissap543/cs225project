@@ -5,8 +5,6 @@ using std::string;
 using std::pair; 
 
 Matrix::Matrix(std::string file_name, int n): matrix(nullptr), distMatrix(nullptr), next(nullptr), n(n) {
-  // TODO change the dataset for the matrix tests
-  // can use the other dataset to print out the nodes with the most edges
   ifstream ifs(file_name);
   int i = 0;
   matrix= new bool*[n];
