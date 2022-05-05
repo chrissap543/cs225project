@@ -1,5 +1,6 @@
 #include "catch2/catch.hpp"
 #include "processdata.hpp"
+#include "tests_helper.h"
 
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>   
