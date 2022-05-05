@@ -197,3 +197,15 @@ TEST_CASE("Full scale test", "[graph][traversal][data]") {
   REQUIRE(std::find(dfs.begin(), dfs.end(), "dataisbeautiful") != dfs.end()); 
   REQUIRE(std::find(dfs.begin(), dfs.end(), "mgtow") != dfs.end()); 
 }
+
+TEST_CASE("adjacency matrix test", "[graph][traversal][data]") {
+
+}
+
+TEST_CASE("adjacency matrix test2", "[graph][traversal][data]") {
+
+}
+
+TEST_CASE("Shortest distance matrix test", "[graph][traversal][data]") {
+
+}
