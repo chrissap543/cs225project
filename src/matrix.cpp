@@ -149,7 +149,6 @@ std::vector<std::string> Matrix::mostCentral(size_t num) {
     central.push_back(*it); 
     ++it; 
   }
-  // todo convert this to a heap
   std::sort(central.begin(), central.end(), [](std::pair<string, int>& left, std::pair<string, int>& right) {
     return left.second < right.second; 
   });  

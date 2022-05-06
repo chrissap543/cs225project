@@ -167,7 +167,7 @@ bool hasFlag(char** begin, char** end, const std::string& option) {
 
 int allPairsShortest(Matrix& m, int argc, char** argv) {
   m.shortestPath(); 
-  char* first_subreddit = getFlagOption(argv, argv+argc, "-t"); 
+  char* first_subreddit = getFlagOption(argv, argv+argc, "-f"); 
   if(first_subreddit) {
     if(first_subreddit[0] == '-') { // hit another flag
       checkConnectivity(m); 
