@@ -142,6 +142,8 @@ int main(int argc, char **argv) {
     std::ofstream ofs(output_file); 
     ofs << ss.str(); 
   }
+
+  std::cout.rdbuf(old_buf); 
   return 0; 
 }
 
@@ -203,7 +205,7 @@ void checkConnectivity(Matrix& m) {
 }
 
 int printBetweeness(Matrix& m, int num) {
-  if(num > m.size()) {
+  if(num > m.getSize()) {
     std::cerr << "Tried to calculate more central nodes than the size of the graph" << std::endl; 
     return -1; 
   }
