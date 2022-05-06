@@ -14,7 +14,7 @@ TEST_CASE("emtpy csv build matrix", "[matrix][data]") {
 }
 
 TEST_CASE("test2.csv build matrix", "[matrix][data]") {
-  Matrix m("../tests/test_data/test2.csv",0); 
+  Matrix m("../tests/test_data/test2.csv",20); 
 }
 TEST_CASE("Full scale build matrix", "[matrix][data]") {
   Matrix m("../data/new_fixed_data.csv",1997); 
@@ -127,12 +127,14 @@ TEST_CASE("Shortest distance matrix test2", "[matrix][apsp][data]") {
 
 TEST_CASE("betwness centrality public test", "[matrix][data]") {
   int n = 5;
+  std::cout << "test";
   Matrix m("../tests/test_data/sample_data_2.csv", n);
 }
 
 TEST_CASE("Check for Correct Path", "[matrix][apsp][data]") {
   Matrix m("../data/new_fixed_data.csv",1997); 
   m.shortestPath();
+  
   int**d=m.getDist();
   bool**con=m.getMatrix();
   srand (time(NULL));
@@ -153,3 +155,36 @@ TEST_CASE("Check for Correct Path", "[matrix][apsp][data]") {
 }
 
 //testcommit
+TEST_CASE("Check for Betweenness Centrality Small", "[matrix][between][data]") {
+  Matrix m("../tests/test_data/test1.csv", 4); 
+  
+  std::cerr << "before" << std::endl;
+  std::vector<std::string> test = m.mostCentral(2);
+  std::cerr<< test.size();
+  std::cerr << "AFTER" << std::endl;
+  for(size_t i = 0; i < test.size(); i++){
+    std::cerr << test[i] << "\n";
+  }
+  REQUIRE(false);
+
+
+
+}
+
+TEST_CASE("Check for Betweenness Centrality Medium", "[matrix][between][data]") {
+  Matrix m("../tests/test_data/test2.csv", 20); 
+  
+  
+  std::vector<std::string> test = m.mostCentral(2);
+  //std::cerr<< test.size();
+  //std::cerr << "AFTER" << std::endl;
+  for(size_t i = 0; i < test.size(); i++){
+    std::cerr << test[i] << "\n";
+  }
+
+  std::vector<std::string> answer {"a1", "a5"};
+  REQUIRE(test == answer);
+
+
+
+}
