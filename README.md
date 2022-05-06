@@ -47,7 +47,7 @@ We specify a number of flags
 * -f: runs Floyd-Warshall algorithm
 * -b: runs betweeness centrality
 * -o: output to a file
-* -r: read from given file
+* -r: read from a file
 
 Here are some example usages:
 ```
@@ -62,7 +62,7 @@ Note that the subreddits that can be passed with
 ```
 ./exec -f <subreddit_1> <subreddit_2>
 ```
-must be of the top 2000 most subscribed subreddits. You can find a list of those at `data/new_matrix_data.txt`. 
+must be of the top 1997 most subscribed subreddits. You can find a list of those at `data/new_matrix_data.txt`. 
 
 ### Test Suite
 To build the test suite, run
