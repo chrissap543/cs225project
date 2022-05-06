@@ -101,7 +101,7 @@ int main(int argc, char **argv) {
   if(traversal) {
     if(newinput) {
       Graph g = buildGraph(input_file); 
-      g.dfs(); 
+      g.dfs(g.getNodes().begin()->first); 
     } else {
       Graph g = buildGraph("../data/fixed_data.csv"); 
       g.dfs(); 

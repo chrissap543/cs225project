@@ -19,7 +19,8 @@ public:
   const size_t getSize() const; 
 
 /**
- * @brief runs dfs on 
+ * @brief runs dfs on the graph
+ * Note that this will only work on the reddit dataset since we arbitrarily chose a starting node
  */
   std::vector<std::string> dfs(); 
 
