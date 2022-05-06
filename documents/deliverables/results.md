@@ -19,7 +19,7 @@ The first step was to make sure the data processing was handled properly. We can
 Depth first search was more difficult to test since we used an unordered map for storing our nodes. Using a map was not feasible due to the size of our dataset. Therefore, our test cases for depth first search are centered around making sure that every node was found, not that the depth first search produced the same ordering every time. For the small scale tests, we are able to check that all of the nodes are hit by simply iterating through them all. For the large scale dataset, we verify that chosen datapoints are hit at some point in the traversal. We do not verify that all datapoints are hit because there are simply too many datapoints to go through by hand. 
 
 ### Floyd-Warshall
-
+We tested Floyd-Warshall in two ways. The first way was to verify that a small graph would have the exact distance matrix we expect. The other was to verify that the path construction indeed did have a valid path between nodes. We did this by checking that each step of the path were connected. 
 
 ### Betweeness Centrality
 

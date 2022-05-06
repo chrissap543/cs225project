@@ -20,14 +20,14 @@ public:
 
   std::vector<std::string> dfs(); 
 
-  /**
+/**
  * @brief Take a name of the node and produces traversal path
  * @param start the name of the node we want to start traversal with
  * @return a vector represents traversal of the graph
  */
   std::vector<std::string> dfs(std::string start); 
 
-  /**
+/**
  * @brief Take a starting node and produces traversal path
  * @param start the node we want to start traversal with
  * @return a vector represents traversal of the graph

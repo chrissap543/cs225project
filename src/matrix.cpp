@@ -68,10 +68,6 @@ std::string Matrix::name(int a) {
   return names[a];
 }
 
-int Matrix::size() {
-  return n; 
-}
-
 void Matrix::shortestPath() {
   calcedShortestPath = true; 
   
@@ -123,15 +119,18 @@ std::vector<std::string> Matrix::constructPath(std::string a, std::string b) {
 bool Matrix::isAllConnected() {
   if(!calcedShortestPath)
     shortestPath(); 
+  bool foundInfinite = false; 
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       if(i == j)
         continue; 
-      if(distMatrix[i][j] == INT_MAX)
-        return false; 
+      if(distMatrix[i][j] == INT_MAX) {
+        std::cout << "No path between " << names.at(i) 
+          << " and " << names.at(j) << "." << std::endl; 
+      }
     }
   }
-  return true; 
+  return foundInfinite; 
 }
 
 std::vector<std::string> Matrix::mostCentral(size_t num) {
