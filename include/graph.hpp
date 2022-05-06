@@ -37,7 +37,11 @@ public:
  * @return a vector represents traversal of the graph
  */
   std::vector<std::string> dfs(Node* start); 
-
+/**
+ * @brief Returns a vector of the highest degree nodes in the graph
+ * @param num the number of highest degree nodes to output
+ * @return a vector of the highest degree nodes in the graph
+ */ 
   std::vector<std::string> highestDegree(int num); 
 
 private:
