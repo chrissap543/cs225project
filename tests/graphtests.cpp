@@ -118,6 +118,7 @@ TEST_CASE("Small graph dfs1", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("LOL"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 TEST_CASE("Small graph dfs2", "[graph][traversal]") {
   std::cout.setstate(std::ios_base::failbit); 
@@ -126,6 +127,7 @@ TEST_CASE("Small graph dfs2", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("behindthegifs"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 TEST_CASE("Small graph dfs3", "[graph][traversal]") {
   std::cout.setstate(std::ios_base::failbit); 
@@ -134,6 +136,7 @@ TEST_CASE("Small graph dfs3", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("NBA"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 TEST_CASE("Small graph dfs4", "[graph][traversal]") {
   std::cout.setstate(std::ios_base::failbit); 
@@ -142,6 +145,7 @@ TEST_CASE("Small graph dfs4", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("wowthissubexists"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 
 TEST_CASE("Small disconnected graph dfs1", "[graph][traversal]") {
@@ -151,6 +155,7 @@ TEST_CASE("Small disconnected graph dfs1", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("LOL"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 TEST_CASE("Small disconnected graph dfs2", "[graph][traversal]") {
   std::cout.setstate(std::ios_base::failbit); 
@@ -159,6 +164,7 @@ TEST_CASE("Small disconnected graph dfs2", "[graph][traversal]") {
   std::vector<std::string> dfs = graph.dfs("movies"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 
 TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
@@ -172,6 +178,7 @@ TEST_CASE("Small random size graph dfs", "[graph][traversal]") {
   dfs = graph.dfs("d"); 
   for(std::string& str : expected)
     REQUIRE(std::find(dfs.begin(), dfs.end(), str) != dfs.end()); 
+  std::cout.clear(); 
 }
 TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
   std::cout.setstate(std::ios_base::failbit); 
@@ -179,6 +186,7 @@ TEST_CASE("Small random size graph dfs2", "[graph][traversal]") {
     Graph graph = makeTestGraph(i);
     REQUIRE(graph.dfs("a").size() == i);
   }
+  std::cout.clear();
 }
 
 TEST_CASE("Full scale test", "[graph][traversal][data]") {
@@ -205,4 +213,5 @@ TEST_CASE("Full scale test", "[graph][traversal][data]") {
   REQUIRE(std::find(dfs.begin(), dfs.end(), "anxiety") != dfs.end()); 
   REQUIRE(std::find(dfs.begin(), dfs.end(), "dataisbeautiful") != dfs.end()); 
   REQUIRE(std::find(dfs.begin(), dfs.end(), "mgtow") != dfs.end()); 
+  std::cout.clear(); 
 }

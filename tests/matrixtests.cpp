@@ -131,7 +131,6 @@ TEST_CASE("Shortest distance matrix test2", "[matrix][apsp][data]") {
 
 TEST_CASE("betwness centrality public test", "[matrix][data]") {
   int n = 5;
-  std::cout << "test";
   Matrix m("../tests/test_data/sample_data_2.csv", n);
 }
 
@@ -165,10 +164,6 @@ TEST_CASE("Check for Betweenness Centrality Small", "[matrix][between][data]") {
   
   
   std::vector<std::string> test = m.mostCentral(2);
-  
-  // for(size_t i = 0; i < test.size(); i++){
-  //   std::cerr << test[i] << "\n";
-  // }
 
   std::vector<std::string> answer {"a1", "a3"};
   REQUIRE(test == answer);
@@ -177,12 +172,7 @@ TEST_CASE("Check for Betweenness Centrality Small", "[matrix][between][data]") {
 TEST_CASE("Check for Betweenness Centrality Medium", "[matrix][between][data]") {
   Matrix m("../tests/test_data/test2.csv", 20); 
   
-  
   std::vector<std::string> test = m.mostCentral(2);
-  
-  // for(size_t i = 0; i < test.size(); i++){
-  //   std::cerr << test[i] << "\n";
-  // }
 
   std::vector<std::string> answer {"a1", "a5"};
   REQUIRE(test == answer);
@@ -190,13 +180,8 @@ TEST_CASE("Check for Betweenness Centrality Medium", "[matrix][between][data]") 
 
 TEST_CASE("Check for Betweenness Centrality Large", "[matrix][between][data]") {
   Matrix m("../tests/test_data/test3.csv", 50); 
-  
-  
+    
   std::vector<std::string> test = m.mostCentral(3);
-  
-  // for(size_t i = 0; i < test.size(); i++){
-  //   std::cerr << test[i] << "\n";
-  // }
 
   std::vector<std::string> answer {"a1", "a5", "a4"};
   REQUIRE(test == answer);

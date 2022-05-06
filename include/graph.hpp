@@ -18,6 +18,9 @@ public:
   const unordered_map<string, Node*>& getNodes() const; 
   const size_t getSize() const; 
 
+/**
+ * @brief runs dfs on 
+ */
   std::vector<std::string> dfs(); 
 
 /**
