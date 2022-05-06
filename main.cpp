@@ -14,137 +14,140 @@ void checkConnectivity(Matrix& m);
 int printBetweeness(Matrix& m, int num); 
 
 int main(int argc, char **argv) {
-  if(argc < 2) {
-    std::cerr << "Usage: " << argv[0] << " [flags] (use -h for help)" << std::endl; 
-    return -1; 
-  }
+  Matrix m("../tests/test_data/test1.csv", 4); 
+  
+  std::vector<std::string> test = m.mostCentral(2);
+  // if(argc < 2) {
+  //   std::cerr << "Usage: " << argv[0] << " [flags] (use -h for help)" << std::endl; 
+  //   return -1; 
+  // }
 
-  // check for help flag
-  if(hasFlag(argv, argv+argc, "-h")) {
-    printHelp(argv); 
-    if(argc > 2) {
-      std::cerr << "Do not use help with other arguments" << std::endl;
-      return -1; 
-    }
-    return 0; 
-  }
+  // // check for help flag
+  // if(hasFlag(argv, argv+argc, "-h")) {
+  //   printHelp(argv); 
+  //   if(argc > 2) {
+  //     std::cerr << "Do not use help with other arguments" << std::endl;
+  //     return -1; 
+  //   }
+  //   return 0; 
+  // }
 
-  std::stringstream ss; 
-  // redirect the buffer
-  auto old_buf = std::cout.rdbuf(ss.rdbuf()); 
-  bool tostdout = true; 
-  // check for output flag
-  std::string output_file = ""; 
-  if(hasFlag(argv, argv+argc, "-o")) {
-    char* filename = getFlagOption(argv, argv+argc, "-o"); 
-    if(!filename) {
-      std::cerr << "No output file specified after flag" << std::endl; 
-      return -1; 
-    }
-    tostdout = false; 
-    output_file = filename; 
-  }
+  // std::stringstream ss; 
+  // // redirect the buffer
+  // auto old_buf = std::cout.rdbuf(ss.rdbuf()); 
+  // bool tostdout = true; 
+  // // check for output flag
+  // std::string output_file = ""; 
+  // if(hasFlag(argv, argv+argc, "-o")) {
+  //   char* filename = getFlagOption(argv, argv+argc, "-o"); 
+  //   if(!filename) {
+  //     std::cerr << "No output file specified after flag" << std::endl; 
+  //     return -1; 
+  //   }
+  //   tostdout = false; 
+  //   output_file = filename; 
+  // }
 
-  // check for read flag
-  bool newinput = false; 
-  std::string input_file = "";
-  if(hasFlag(argv, argv+argc, "-r")) {
-    char* filename = getFlagOption(argv, argv+argc, "-r"); 
-    if(!filename) {
-      std::cerr << "No input file specified after flag" << std::endl; 
-      return -1; 
-    }
-    input_file = filename; 
-    newinput = true; 
-  }
+  // // check for read flag
+  // bool newinput = false; 
+  // std::string input_file = "";
+  // if(hasFlag(argv, argv+argc, "-r")) {
+  //   char* filename = getFlagOption(argv, argv+argc, "-r"); 
+  //   if(!filename) {
+  //     std::cerr << "No input file specified after flag" << std::endl; 
+  //     return -1; 
+  //   }
+  //   input_file = filename; 
+  //   newinput = true; 
+  // }
 
-  // check for which algorithm to run
-  bool foundAlgo = false, traversal = false, apsp = false, between = false; 
-  if(hasFlag(argv, argv+argc, "-t")) {
-    foundAlgo = true; 
-    traversal = true; 
-  }
-  if(hasFlag(argv, argv+argc, "-f")) {
-    if(foundAlgo) {
-      std::cerr << "Run one algorithm at a time" << std::endl; 
-      return -1; 
-    }
-    foundAlgo = true;
-    apsp = true; 
-  }
-  int numCentral = 5; 
-  if(hasFlag(argv, argv+argc, "-b")) {
-    if(foundAlgo) {
-      std::cerr << "Run one algorithm at a time" << std::endl; 
-      return -1; 
-    }
-    foundAlgo = true; 
-    between = true; 
-    char* num = getFlagOption(argv, argv+argc, "-b"); 
-    if(num && num[0] != '-') {
-      // check that num numeric
-      std::string s(num); 
-      if(s.find_first_not_of("0123456789") == std::string::npos)
-        numCentral = std::stoi(s); 
-      else {
-        std::cout << "Input a valid number for central nodes" << std::endl;
-        return -1; 
-      }
-    }
-  }
+  // // check for which algorithm to run
+  // bool foundAlgo = false, traversal = false, apsp = false, between = false; 
+  // if(hasFlag(argv, argv+argc, "-t")) {
+  //   foundAlgo = true; 
+  //   traversal = true; 
+  // }
+  // if(hasFlag(argv, argv+argc, "-f")) {
+  //   if(foundAlgo) {
+  //     std::cerr << "Run one algorithm at a time" << std::endl; 
+  //     return -1; 
+  //   }
+  //   foundAlgo = true;
+  //   apsp = true; 
+  // }
+  // int numCentral = 5; 
+  // if(hasFlag(argv, argv+argc, "-b")) {
+  //   if(foundAlgo) {
+  //     std::cerr << "Run one algorithm at a time" << std::endl; 
+  //     return -1; 
+  //   }
+  //   foundAlgo = true; 
+  //   between = true; 
+  //   char* num = getFlagOption(argv, argv+argc, "-b"); 
+  //   if(num && num[0] != '-') {
+  //     // check that num numeric
+  //     std::string s(num); 
+  //     if(s.find_first_not_of("0123456789") == std::string::npos)
+  //       numCentral = std::stoi(s); 
+  //     else {
+  //       std::cout << "Input a valid number for central nodes" << std::endl;
+  //       return -1; 
+  //     }
+  //   }
+  // }
 
-  if(!foundAlgo) {
-    std::cerr << "Choose an algorithm to run" << std::endl; 
-    return -1; 
-  }
+  // if(!foundAlgo) {
+  //   std::cerr << "Choose an algorithm to run" << std::endl; 
+  //   return -1; 
+  // }
 
-  if(traversal) {
-    if(newinput) {
-      Graph g = buildGraph(input_file); 
-      g.dfs(); 
-    } else {
-      Graph g = buildGraph("../data/fixed_data.csv"); 
-      g.dfs(); 
-    }
-  }
+  // if(traversal) {
+  //   if(newinput) {
+  //     Graph g = buildGraph(input_file); 
+  //     g.dfs(); 
+  //   } else {
+  //     Graph g = buildGraph("../data/fixed_data.csv"); 
+  //     g.dfs(); 
+  //   }
+  // }
 
-  if(apsp) {
-    if(newinput) {
-      Graph g = buildGraph(input_file); 
-      Matrix m(input_file, g.getSize()); 
-      if(allPairsShortest(m, argc, argv) == -1)
-        return -1; 
-    } else {
-      Matrix m("../data/new_fixed_data.csv", 1997); 
-      if(allPairsShortest(m, argc, argv) == -1)
-        return -1; 
-    }
-  }
+  // if(apsp) {
+  //   if(newinput) {
+  //     Graph g = buildGraph(input_file); 
+  //     Matrix m(input_file, g.getSize()); 
+  //     if(allPairsShortest(m, argc, argv) == -1)
+  //       return -1; 
+  //   } else {
+  //     Matrix m("../data/new_fixed_data.csv", 1997); 
+  //     if(allPairsShortest(m, argc, argv) == -1)
+  //       return -1; 
+  //   }
+  // }
 
-  if(between) {
-    if(newinput) {
-      Graph g = buildGraph(input_file); 
-      Matrix m(input_file, g.getSize()); 
-      if(printBetweeness(m, numCentral) == -1)
-        return -1; 
-    } else {
-      Matrix m("../data/new_fixed_data.csv", 1997); 
-      if(printBetweeness(m, numCentral) == -1)
-        return -1; 
-    }
-  }
+  // if(between) {
+  //   if(newinput) {
+  //     Graph g = buildGraph(input_file); 
+  //     Matrix m(input_file, g.getSize()); 
+  //     if(printBetweeness(m, numCentral) == -1)
+  //       return -1; 
+  //   } else {
+  //     Matrix m("../data/new_fixed_data.csv", 1997); 
+  //     if(printBetweeness(m, numCentral) == -1)
+  //       return -1; 
+  //   }
+  // }
 
-  if(tostdout) {
-    std::cout.rdbuf(old_buf); 
-    std::cout << ss.str(); 
-  } else {
-    // write to a file
-    std::ofstream ofs(output_file); 
-    ofs << ss.str(); 
-  }
+  // if(tostdout) {
+  //   std::cout.rdbuf(old_buf); 
+  //   std::cout << ss.str(); 
+  // } else {
+  //   // write to a file
+  //   std::ofstream ofs(output_file); 
+  //   ofs << ss.str(); 
+  // }
 
-  std::cout.rdbuf(old_buf); 
-  return 0; 
+  // std::cout.rdbuf(old_buf); 
+  // return 0; 
 }
 
 void printHelp(char** argv) {

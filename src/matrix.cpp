@@ -139,9 +139,22 @@ std::vector<std::string> Matrix::mostCentral(size_t num) {
   // calculate centrality of all
   std::unordered_map<string, int> betweeness; 
   for(size_t i = 0; i < n; i++) {
-    betweeness.insert({names[i], calcBetweeness(i)}); 
+    for(size_t j = 0; j < n; j++) {
+      if(i == j)
+        continue; 
+      std::vector<std::string> path = constructPath(i, j); 
+      if(path != std::vector<std::string>()) {
+        for(size_t k = 1; k < path.size()-1; k++)
+          betweeness[path[k]]++; 
+      }
+    }
   }
-  // add first num elements to vector
+  // verify that all nodes have been added
+  for(auto it = names.begin(); it != names.end(); ++it) {
+    if(betweeness.find(it->second) == betweeness.end())
+      betweeness.insert({it->second, 0}); 
+  }
+
   std::vector<std::pair<string, int>> central; 
   auto it = betweeness.begin(); 
   for(size_t i = 0; i < num; i++) {
@@ -166,27 +179,6 @@ std::vector<std::string> Matrix::mostCentral(size_t num) {
     toReturn.push_back(tmp->first); 
   }
   return toReturn; 
-}
-
-int Matrix::calcBetweeness(int a) {
-  std::string& target = names[a]; 
-  int count = 0; 
-  for(size_t i = 0; i < n; i++) {
-    if(i == a)
-      continue;
-    for(size_t j = 0; j < n; j++) {
-      if(j == a || j == i)
-        continue; 
-      // check if shortest path contains a
-      std::vector<std::string> path = constructPath(i, j); 
-      if(std::find(path.begin(), path.end(), target) != path.end())
-        count++; 
-    }
-  }
-  return count; 
-}
-int Matrix::calcBetweeness(std::string a) {
-  return calcBetweeness(indices[a]); 
 }
 
 int Matrix::getSize() const
