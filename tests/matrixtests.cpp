@@ -16,6 +16,10 @@ TEST_CASE("emtpy csv build matrix", "[matrix][data]") {
 TEST_CASE("test2.csv build matrix", "[matrix][data]") {
   Matrix m("../tests/test_data/test2.csv",20); 
 }
+
+TEST_CASE("test3.csv build matrix", "[matrix][data]") {
+  Matrix m("../tests/test_data/test3.csv",50); 
+}
 TEST_CASE("Full scale build matrix", "[matrix][data]") {
   Matrix m("../data/new_fixed_data.csv",1997); 
   // cannot check the whole graph so check that specific nodes in the graph
@@ -154,21 +158,20 @@ TEST_CASE("Check for Correct Path", "[matrix][apsp][data]") {
   }
 }
 
-//testcommit
+//these betweenness centrality tests consist of datasets with very obvious central nodes manually constructed, so we can test the algorithm.
+
 TEST_CASE("Check for Betweenness Centrality Small", "[matrix][between][data]") {
   Matrix m("../tests/test_data/test1.csv", 4); 
   
-  std::cerr << "before" << std::endl;
+  
   std::vector<std::string> test = m.mostCentral(2);
-  std::cerr<< test.size();
-  std::cerr << "AFTER" << std::endl;
-  for(size_t i = 0; i < test.size(); i++){
-    std::cerr << test[i] << "\n";
-  }
-  REQUIRE(false);
+  
+  // for(size_t i = 0; i < test.size(); i++){
+  //   std::cerr << test[i] << "\n";
+  // }
 
-
-
+  std::vector<std::string> answer {"a1", "a3"};
+  REQUIRE(test == answer);
 }
 
 TEST_CASE("Check for Betweenness Centrality Medium", "[matrix][between][data]") {
@@ -176,15 +179,25 @@ TEST_CASE("Check for Betweenness Centrality Medium", "[matrix][between][data]") 
   
   
   std::vector<std::string> test = m.mostCentral(2);
-  //std::cerr<< test.size();
-  //std::cerr << "AFTER" << std::endl;
-  for(size_t i = 0; i < test.size(); i++){
-    std::cerr << test[i] << "\n";
-  }
+  
+  // for(size_t i = 0; i < test.size(); i++){
+  //   std::cerr << test[i] << "\n";
+  // }
 
   std::vector<std::string> answer {"a1", "a5"};
   REQUIRE(test == answer);
+}
 
+TEST_CASE("Check for Betweenness Centrality Large", "[matrix][between][data]") {
+  Matrix m("../tests/test_data/test3.csv", 50); 
+  
+  
+  std::vector<std::string> test = m.mostCentral(3);
+  
+  // for(size_t i = 0; i < test.size(); i++){
+  //   std::cerr << test[i] << "\n";
+  // }
 
-
+  std::vector<std::string> answer {"a1", "a5", "a4"};
+  REQUIRE(test == answer);
 }
