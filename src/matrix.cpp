@@ -120,6 +120,8 @@ bool Matrix::isAllConnected() {
   if(!calcedShortestPath)
     shortestPath(); 
   bool foundInfinite = false; 
+  int maxDist = -1; 
+  int maxIndex1 = -1, maxIndex2 = -1; 
   for(size_t i = 0; i < n; i++) {
     for(size_t j = 0; j < n; j++) {
       if(i == j)
@@ -127,9 +129,17 @@ bool Matrix::isAllConnected() {
       if(distMatrix[i][j] == INT_MAX) {
         std::cout << "No path between " << names.at(i) 
           << " and " << names.at(j) << "." << std::endl; 
+      } else {
+        if(distMatrix[i][j] > maxDist) {
+          maxDist = distMatrix[i][j]; 
+          maxIndex1 = i;
+          maxIndex2 = j; 
+        }
       }
     }
   }
+  std::cout << "the max distance is " << maxDist << " between "
+    << names[maxIndex1] << " and " << names[maxIndex2] << "." << std::endl; 
   return foundInfinite; 
 }
 

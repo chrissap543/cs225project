@@ -1,5 +1,5 @@
 # Organization
-The code is in the `include` and `source` directories. The tests are in the `tests` directory. The data is in the `data` directory and the data preprocessing scripts are in the `data_preprocessing` directory. The final deliverables are in in `documents/deliverables`. 
+The code is in the `include` and `source` directories. The tests are in the `tests` directory. The data is in the `data` directory and the data preprocessing scripts are in the `data_preprocessing` directory. The final deliverables are in in `documents/deliverables`. Note that the video presentation is stored on google drive and the link is in `video.md`. 
 
 # Building This Project
 
